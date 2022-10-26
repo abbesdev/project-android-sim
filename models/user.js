@@ -1,12 +1,11 @@
 const mongoose = require("mongoose");
 
-const User = mongoose.model(
+var User = mongoose.model(
   "User",
   new mongoose.Schema({
-    fullname: String,
+    fullname:String,
     email: String,
     password: String,
- //   ecole: String,
     roles: [
       {
         type: mongoose.Schema.Types.ObjectId,
