@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Schoolspace</string>
+    <string name="discover_ou">Discover our app and take your school to the next level</string>
+    <string name="discover_wh">Discover what you can do in our app from monitoring to uploading everything about your school.</string>
+    <string name="sign_in_to_">Sign in to you account</string>
+    <string name="sign_in_to_2">Sign in to your account so you see updates about classrooms and staffs.</string>
+    <string name="email_addre">Email Address</string>
+
 </resources>
