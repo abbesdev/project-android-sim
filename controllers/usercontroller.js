@@ -35,5 +35,15 @@ exports.updateUser = async (req, res) => {
     res.status(404).send({error : "User not found"});
   }
 };
+exports.deleteUser = async (req, res) => {
+   try{
+    const user = await User.findById(req.params.id);
+    Object.assign(user, req.body);
+    user.delete();
+    res.send({data : "user deleted successfully"});
+  } catch {
+    res.status(404).send({error : "User not found"});
+  }
+};  
 
 //exports.
