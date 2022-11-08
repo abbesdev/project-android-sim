@@ -1,7 +1,10 @@
 const express = require("express");
 const cors = require("cors");
-bodyParser = require('body-parser');
+//import nodemailer from 'nodemailer';
+const nodemailer = require("nodemailer");
 
+
+bodyParser = require('body-parser');
 const app = express();
 
 var corsOptions = {
@@ -12,6 +15,16 @@ app.use(cors(corsOptions));
 
 
 app.use(bodyParser.json());
+/*
+const transporter = nodemailer.createTransport({
+  host: "smtp.mailtrap.io",
+  port: 465 ,
+  auth: {
+    user: "5aebbd9cfde306",
+    pass: "bd86be6e80eabd"
+  },
+});
+*/
 
 // simple route
 app.get("/", (req, res) => {

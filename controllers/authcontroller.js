@@ -2,12 +2,22 @@ const config = require("../config/authconfig");
 const db = require("../models");
 const User = db.user;
 const Role = db.role;
-
+const nodemailer = require("nodemailer");
+const users = require("../models/user.js");
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
 
 
+const transporter = nodemailer.createTransport({
+  host: "smtp.mailtrap.io",
+  port: 2525 ,
+  auth: {
+    user: "5aebbd9cfde306",
+    pass: "bd86be6e80eabd"
+  },
+});
+const EMAIL_SECRET = 'asdf1093KMnzxcvnkljvasdu09123nlasdasdf';
 exports.signup = (req, res) => {
   const user = new User({
     fullname: req.body.fullname,
@@ -38,7 +48,26 @@ exports.signup = (req, res) => {
               res.status(500).send({ message: err });
               return;
             }
-
+/************************************* */
+            jwt.sign(
+              {
+                id: user.id,
+              },
+              EMAIL_SECRET,
+              {
+                expiresIn: '1d',
+              },
+              (err, emailToken) => {
+                const url = `http://localhost:8080/confirmation/${emailToken}`;
+      
+                transporter.sendMail({
+                  to: user.email,
+                  subject: 'Confirm Email',
+                  html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`,
+                });
+              },
+            );
+/**************** */
             res.send({ message: "User was registered successfully!" });
           });
         }
@@ -63,7 +92,19 @@ exports.signup = (req, res) => {
     }
   });
 };
-
+exports.confirm = async (req, res) => {
+  try{
+    const id = jwt.verify(req.params.token, EMAIL_SECRET);
+    const user = await User.findById(id.id);
+    const theid = id.id;
+    await users.update({_id : theid},{confirmed: true});
+    
+    res.send("confirmed");
+  }catch(e){
+    res.send("error");
+  }
+   
+};
 exports.signin = (req, res) => {
   User.findOne({
     email: req.body.email
@@ -77,6 +118,9 @@ exports.signin = (req, res) => {
 
       if (!user) {
         return res.status(404).send({ message: "User Not found." });
+      }
+      if(!user.confirmed){
+        return res.status(404).send({ message: "User not confirmed." });
       }
 
       var passwordIsValid = bcrypt.compareSync(
