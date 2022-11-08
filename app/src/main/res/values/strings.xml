@@ -5,5 +5,21 @@
     <string name="sign_in_to_">Sign in to you account</string>
     <string name="sign_in_to_2">Sign in to your account so you see updates about classrooms and staffs.</string>
     <string name="email_addre">Email Address</string>
+    <string name="spinnertext">Select your role in the app</string>
+    <string-array name="languages">
+        <item>Student</item>
+        <item>Teacher</item>
+        <item>Parent</item>
+
+    </string-array>
+    <string-array name="classes">
+        <item>4 SIM 1</item>
+        <item>4 SIM 2</item>
+        <item>4 SIM 3</item>
+        <item>4 SIM 4</item>
+        <item>4 SIM 5</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

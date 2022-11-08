@@ -30,6 +30,21 @@
             android:exported="true">
 
         </activity>
+        <activity
+            android:name=".SignUpScreen"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".NextStepScreen"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".MainScreen"
+            android:exported="true">
+
+        </activity>
     </application>
 
 </manifest>
