@@ -50,6 +50,12 @@ app.get(
   "/confirmation/:token",
   authcontroller.confirm
 );
+  
+   //delete user by id
+  app.delete(
+    "/api/test/deleteuser/:id",
+    controller.deleteUser
+  );
 
   /*
   app.get(
