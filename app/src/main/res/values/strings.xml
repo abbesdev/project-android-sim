@@ -12,6 +12,12 @@
         <item>Parent</item>
 
     </string-array>
+    <string-array name="childs">
+        <item>Mohamed</item>
+        <item>Foulen</item>
+
+
+    </string-array>
     <string-array name="classes">
         <item>4 SIM 1</item>
         <item>4 SIM 2</item>

@@ -1,10 +1,16 @@
 package com.abbes.schoolspace
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.Spinner
+import com.abbes.schoolspace.adapters.CustomAdapter
+import com.abbes.schoolspace.models.ImageModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,6 +29,7 @@ class ReportFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -33,6 +40,7 @@ class ReportFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_report, container, false)
     }
@@ -55,5 +63,47 @@ class ReportFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+    private var lv: ListView? = null
+    private var customeAdapter: CustomAdapter? = null
+    private var imageModelArrayList: ArrayList<ImageModel>? = null
+    private val myImageList = intArrayOf(R.drawable.high_school_physics_120415_large, R.drawable.high_school_physics_120415_large, R.drawable.high_school_physics_120415_large, R.drawable.high_school_physics_120415_large, R.drawable.high_school_physics_120415_large, R.drawable.high_school_physics_120415_large, R.drawable.high_school_physics_120415_large, R.drawable.high_school_physics_120415_large)
+    private val myImageNameList = arrayOf("Applied Physics", "Android ", "Material UI", "Applied Physics", "Applied Physics", "Applied Physics", "Applied Physics", "Applied Physics")
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val spinner: Spinner = view.findViewById(R.id.spinner)
+// Create an ArrayAdapter using the string array and a default spinner layout
+        this.context?.let {
+            ArrayAdapter.createFromResource(
+                it,
+                R.array.childs,
+                android.R.layout.simple_spinner_item
+            ).also { adapter ->
+                // Specify the layout to use when the list of choices appears
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                // Apply the adapter to the spinner
+                spinner.adapter = adapter
+            }
+        }
+        lv = view.findViewById(R.id.userlist) as ListView
+
+        imageModelArrayList = populateList()
+        Log.d("hjhjh", imageModelArrayList!!.size.toString() + "")
+        customeAdapter = CustomAdapter(requireContext(), imageModelArrayList!!)
+        lv!!.adapter = customeAdapter
+    }
+    private fun populateList(): ArrayList<ImageModel> {
+
+        val list = ArrayList<ImageModel>()
+
+        for (i in 0..7) {
+            val imageModel = ImageModel()
+            imageModel.setNames(myImageNameList[i])
+            imageModel.setImage_drawables(myImageList[i])
+            list.add(imageModel)
+        }
+
+        return list
     }
 }
