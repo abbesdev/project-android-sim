@@ -5,34 +5,15 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.abbes.schoolspace.models.User
+import com.abbes.schoolspace.models.UserInfo
+import com.abbes.schoolspace.rest.RestApiService
+import retrofit2.Response
+import java.io.IOException
 
 class SignUpScreen: AppCompatActivity() {
-    lateinit var editText: EditText
 
-    fun addDummyUser() {
-        var fullN = findViewById<EditText>(R.id.testf)
-        var email = findViewById<EditText>(R.id.teste)
-        var pass = findViewById<EditText>(R.id.testp)
-        val apiService = RestApiService()
-        val userInfo = User(
-            fullname = fullN.text.toString(),
-            email = email.text.toString(),
-            password = pass.text.toString(),
-        )
 
-        apiService.addUser(userInfo) {
-            if (it?.fullname != null) {
-                // it = newly added user parsed as response
-                // it?.id = newly added user ID
-            } else {
-                val toast = Toast.makeText(applicationContext, "Failed hehe", Toast.LENGTH_LONG)
-                toast.show()
-            }
-        }
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.signup_screen)
@@ -40,11 +21,30 @@ class SignUpScreen: AppCompatActivity() {
 var buttonN = findViewById<Button>(R.id.button)
         buttonSignup.setOnClickListener {
 
-            addDummyUser()
+
 
         }
         buttonN.setOnClickListener({
-            addDummyUser()
+val fullN = findViewById<EditText>(R.id.testf)
+            val email = findViewById<EditText>(R.id.teste)
+            val pass = findViewById<EditText>(R.id.testp)
+            val apiService = RestApiService()
+            val userInfo = UserInfo(fullName = fullN.text.toString(),
+            email = email.text.toString(),
+            password = pass.text.toString())
+
+            apiService.addUser(userInfo){
+
+                if(it?.fullName !=null){
+
+
+                }else{
+                    print("not created check code man!!")
+                }
+                var intent = Intent(applicationContext, NextStepScreen::class.java)
+                startActivity(intent)
+            }
+
         })
 
     }

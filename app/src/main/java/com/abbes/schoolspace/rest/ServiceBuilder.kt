@@ -1,16 +1,14 @@
-package com.abbes.schoolspace
+package com.abbes.schoolspace.rest
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object Client {
+object ServiceBuilder {
     private val client = OkHttpClient.Builder().build()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://localhost:8080") // change this IP for testing by your actual machine IP
+        .baseUrl("http://192.168.1.53:8080/")
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()

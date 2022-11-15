@@ -88,6 +88,8 @@ class ReportFragment : Fragment() {
         }
         lv = view.findViewById(R.id.userlist) as ListView
 
+
+
         imageModelArrayList = populateList()
         Log.d("hjhjh", imageModelArrayList!!.size.toString() + "")
         customeAdapter = CustomAdapter(requireContext(), imageModelArrayList!!)
