@@ -1,3 +1,4 @@
+
 const express = require("express");
 const cors = require("cors");
 //import nodemailer from 'nodemailer';
@@ -25,6 +26,9 @@ const transporter = nodemailer.createTransport({
   },
 });
 */
+const routes = require('./routes/subjectroutes.js');
+
+app.use('/subject', routes)
 
 // simple route
 app.get("/", (req, res) => {

@@ -94,14 +94,13 @@ exports.signup = (req, res) => {
 };
 exports.confirm = async (req, res) => {
   try{
-    const id = jwt.verify(req.params.token, EMAIL_SECRET);
+    const id = req.param.id;
     const user = await User.findById(id.id);
     const theid = id.id;
-    await users.update({_id : theid},{confirmed: true});
-    
+    await users.findByIdAndUpdate({_id:id},{confirmed: true});
     res.send("confirmed");
   }catch(e){
-    res.send("error");
+    res.send(e);
   }
    
 };
@@ -119,8 +118,13 @@ exports.signin = (req, res) => {
       if (!user) {
         return res.status(404).send({ message: "User Not found." });
       }
+
       if(!user.confirmed){
-        return res.status(404).send({ message: "User not confirmed." });
+        var tokenn = jwt.sign({ id: user.id }, config.secret, {
+          expiresIn: 86400 // 24 hours
+        });
+        return res.status(404).send({ message: "User not confirmed.",        accessToken: tokenn, id: user._id
+      });
       }
 
       var passwordIsValid = bcrypt.compareSync(

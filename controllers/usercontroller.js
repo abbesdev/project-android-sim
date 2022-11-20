@@ -29,10 +29,11 @@ exports.updateUser = async (req, res) => {
   try{
     const user = await User.findById(req.params.id);
     Object.assign(user, req.body);
-    user.save();
+    user.update();
     res.send({data : user});
-  } catch {
+  } catch(e) {
     res.status(404).send({error : "User not found"});
+    res.status(400).send({error : e});
   }
 };
 exports.deleteUser = async (req, res) => {
