@@ -31,7 +31,8 @@ val fullN = findViewById<EditText>(R.id.testf)
             val apiService = RestApiService()
             val userInfo = UserInfo(fullName = fullN.text.toString(),
             email = email.text.toString(),
-            password = pass.text.toString())
+            password = pass.text.toString(),
+            confirmed = false)
 
             apiService.addUser(userInfo){
 

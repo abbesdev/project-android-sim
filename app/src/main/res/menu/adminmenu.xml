@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/teachers"
+        android:icon="@drawable/ic_baseline_people_outline_24"
+        android:title="Teachers list"
+        />
+
+    <item
+        android:id="@+id/students"
+        android:icon="@drawable/ic_baseline_people_outline_24"
+        android:title="Students list"
+        />
+
+    <item
+        android:id="@+id/parents"
+        android:icon="@drawable/ic_baseline_people_outline_24"
+        android:title="Parents list"
+        />
+
+    <item
+        android:id="@+id/timetables"
+        android:icon="@drawable/ic_baseline_access_time_24"
+        android:title="Timetables"
+        />
+    <item
+        android:id="@+id/paiements"
+        android:icon="@drawable/ic_baseline_attach_money_24"
+        android:title="School Paiements"
+        />
+
+</menu>

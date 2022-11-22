@@ -24,4 +24,9 @@ interface RestApi {
 
     @GET("subject/getAll")
      fun getAllSubjects(): List<Subject>
+
+
+
+    @GET("users/getAll")
+    fun getAllUsers(): Call<UserInfo>
 }
