@@ -1,14 +1,194 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Profile Fragment" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="140dp"
+            android:layout_height="58dp"
+
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/texttitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+
+
+                android:text="My Profile"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/imageButton1"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:minHeight="48dp"
+                android:src="@drawable/ic_baseline_settings_24"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="110sp"
+            android:layout_height="110sp"
+            android:layout_marginTop="32dp"
+            android:layout_weight="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:srcCompat="@mipmap/ic_launcher_foreground"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/texttitle11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:text="Abbes Mohamed"
+            android:textColor="#000000"
+
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/texttitle111"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Parent of 2 childs"
+            android:textColor="@color/bluemain"
+
+            android:textSize="18sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/texttitle11" />
+
+        <LinearLayout android:id="@+id/linearRoweditmyinfo"
+            android:layout_height="wrap_content"
+            style="@style/groupStylegray_200_14cornerRadius"
+            android:layout_marginTop="32sp"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+
+            app:layout_constraintTop_toBottomOf="@+id/texttitle111"
+            android:orientation="horizontal" >
+            <TextView
+                android:ellipsize="end"
+                android:id="@+id/txtEditmyinfo"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:layout_marginStart="26sp"
+                android:layout_marginTop="25sp"
+                android:layout_weight="0.92"
+                android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="Edit my infos"
+                 />
+            <ImageView android:id="@+id/imageArrowleft"
+                android:layout_height="20sp"
+                android:layout_marginBottom="26sp"
+                android:layout_marginEnd="27sp"
+                android:layout_marginStart="180sp"
+                android:layout_marginTop="28sp"
+                android:layout_width="20sp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                />
+        </LinearLayout>
+        <LinearLayout android:id="@+id/linearRoweditmyinfo3"
+            app:layout_constraintTop_toBottomOf="@+id/linearRoweditmyinfo"
+            android:layout_height="wrap_content"
+            style="@style/groupStylegray_200_14cornerRadius"
+            android:layout_marginTop="4sp"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+
+
+            android:orientation="horizontal" >
+            <TextView
+                android:ellipsize="end"
+                android:id="@+id/txtEditmyinfo1"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:layout_marginStart="26sp"
+                android:layout_marginTop="25sp"
+                android:layout_weight="0.92"
+                android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="Paiements"
+                />
+            <ImageView android:id="@+id/imageArrowleft1"
+                android:layout_height="20sp"
+                android:layout_marginBottom="26sp"
+                android:layout_marginEnd="27sp"
+                android:layout_marginStart="180sp"
+                android:layout_marginTop="28sp"
+                android:layout_width="20sp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                />
+        </LinearLayout>
+        <LinearLayout android:id="@+id/linearRoweditmyinfo1"
+            app:layout_constraintTop_toBottomOf="@+id/linearRoweditmyinfo3"
+
+            android:layout_height="wrap_content"
+            style="@style/groupStylegray_200_14cornerRadius"
+            android:layout_marginTop="4sp"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+            <TextView
+                android:ellipsize="end"
+                android:id="@+id/txtEditmyinfo2"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24sp"
+                android:layout_marginStart="26sp"
+                android:layout_marginTop="25sp"
+                android:layout_weight="0.92"
+                android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="Log out"
+                />
+            <ImageView android:id="@+id/imageArrowleft2"
+                android:layout_height="20sp"
+                android:layout_marginBottom="26sp"
+                android:layout_marginEnd="27sp"
+                android:layout_marginStart="180sp"
+                android:layout_marginTop="28sp"
+                android:layout_width="20sp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                />
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

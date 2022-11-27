@@ -1,7 +1,11 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Widget.Theme.MaterialComponents.Light.NoActionBar.MyView" parent="">
         <item name="android:background">@color/gray_400</item>
         <item name="exampleColor">@color/light_blue_400</item>
     </style>
+    <style name="groupStylegray_200_14cornerRadius">
+        <item name="android:background">@drawable/rectangle_bg_gray_200_14_border_gray_200_radius_10</item>
+    </style>
+
 </resources>

@@ -25,6 +25,7 @@ class DetailActivity : AppCompatActivity() {
         coursePic.setImageResource(intent.getIntExtra(PICTURE, 0))
 
         val name = intent.getStringExtra(NAME)
+        val picture = intent.getStringExtra(PICTURE)
 
 
         title= "$name Detail"

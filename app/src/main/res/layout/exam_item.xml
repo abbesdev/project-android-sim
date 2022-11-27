@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="250sp"
-    android:layout_height="150sp">
+    android:layout_height="150sp"
+    android:layout_marginTop="20sp"
+    android:layout_marginEnd="16sp">
 
 
     <RelativeLayout
@@ -17,18 +19,19 @@
             android:layout_height="179dp"
             android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
         <TextView
+            android:id="@+id/textDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textDown"
-            android:text="Test of recycle view"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bluemain"
             android:gravity="center"
+            android:text="Test of recycle view"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:background="@color/bluemain"
-            android:layout_alignParentBottom="true"/>
+            android:textStyle="bold" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

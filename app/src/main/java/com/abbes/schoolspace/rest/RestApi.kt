@@ -1,9 +1,11 @@
 package com.abbes.schoolspace.rest
 
 import com.abbes.schoolspace.models.Subject
+import com.abbes.schoolspace.models.SubjectItem
 import retrofit2.Call
 import com.abbes.schoolspace.models.UserInfo
 import com.abbes.schoolspace.models.UserSignIn
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -23,5 +25,5 @@ interface RestApi {
 
 
     @GET("subject/getAll")
-     fun getAllSubjects(): List<Subject>
+     fun getAllSubjects(): Call<Subject>
 }

@@ -3,13 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/debug/res/drawable/rectangle_bg_gray_200_14_border_gray_200_radius_10.xml" value="0.127" />
+        <entry key="app/src/debug/res/font/sen.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/gradient_spinner.xml" value="0.2535" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2535" />
+        <entry key="app/src/main/res/drawable/rectangle_bg_gray_200_14_border_gray_200_radius_10.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/rectangle_bg_white_a700.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.12259371833839919" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23489583333333333" />
+        <entry key="app/src/main/res/layout/course_item.xml" value="0.17889492753623187" />
+        <entry key="app/src/main/res/layout/exam_item.xml" value="0.17889492753623187" />
         <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.26343846963652484" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.12056737588652482" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.12056737588652482" />
-        <entry key="app/src/main/res/layout/fragment_report.xml" value="0.12056737588652482" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2835067749023437" />
+        <entry key="app/src/main/res/layout/fragment_report.xml" value="0.1" />
         <entry key="app/src/main/res/layout/main_screen.xml" value="0.12056737588652482" />
         <entry key="app/src/main/res/layout/next_step_screen.xml" value="0.26521148681640627" />
         <entry key="app/src/main/res/layout/sample_profile_bar.xml" value="0.12056737588652482" />
