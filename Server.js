@@ -52,13 +52,16 @@ const db = require("./models");
 const Role = db.role;
 
 db.mongoose
-  .connect(`mongodb+srv://school-space.knoykw5.mongodb.net/school-space`, {
+  .connect(`mongodb+srv://test-admin:mohamed1999@school-space.knoykw5.mongodb.net`, {
+    dbName: 'school-space',
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
   .then(() => {
-    console.log("Successfully connect to MongoDB.");
     initial();
+    console.log("Successfully connect to MongoDB.");
+ 
+  
   })
   .catch(err => {
     console.error("Connection error", err);
