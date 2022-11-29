@@ -1,13 +1,12 @@
 const express = require('express');
 const { verifyToken } = require('../middlewares/authJwt.js');
-const Model = require('../models/subject.js');
+const Model = require('../models/classes.js');
 const router = express.Router();
 
 //Post Method
 router.post('/post',[verifyToken], async (req, res) => {
     const data = new Model({
-        nameSubject: req.body.nameSubject,
-        imageSubject:req.body.imageSubject
+        nameClasse: req.body.nameClasse
       
     })
 
@@ -21,7 +20,7 @@ router.post('/post',[verifyToken], async (req, res) => {
 })
 
 //Get all Method
-router.get('/getAll', async (req, res) => {
+router.get('/getAll',[verifyToken], async (req, res) => {
     try {
 
         const data = await Model.find();
@@ -66,7 +65,7 @@ router.delete('/delete/:id',[verifyToken], async (req, res) => {
     try {
         const id = req.params.id;
         const data = await Model.findByIdAndDelete(id)
-        res.send(`Document with ${data.nameSubject} has been deleted..`)
+        res.send(`Document with ${data.nameClasse} has been deleted..`)
     }
     catch (error) {
         res.status(400).json({ message: error.message })

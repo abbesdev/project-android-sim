@@ -6,7 +6,7 @@ var Subject = mongoose.model(
     
     nameSubject:String,
     
-   
+   imageSubject:String
   
    
   })

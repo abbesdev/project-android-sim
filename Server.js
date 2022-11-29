@@ -30,6 +30,10 @@ const routes = require('./routes/subjectroutes.js');
 
 app.use('/subject', routes)
 
+const routesC = require('./routes/classesroutes.js');
+
+app.use('/classes', routesC)
+
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to app" });
@@ -48,7 +52,7 @@ const db = require("./models");
 const Role = db.role;
 
 db.mongoose
-  .connect(`mongodb://localhost:27017/Schoolspace`, {
+  .connect(`mongodb+srv://school-space.knoykw5.mongodb.net/school-space`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
