@@ -41,6 +41,12 @@ module.exports = function(app) {
     "/api/test/getuser/:id",
     controller.findUser
   );
+
+  //get all users
+  app.get(
+    "/api/test/getallusers",
+    controller.findallUsers
+  );
   //update user by id
   app.patch(
     "/api/test/updateuser/:id",

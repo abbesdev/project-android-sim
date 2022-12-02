@@ -25,6 +25,14 @@ exports.findUser = async (req, res) => {
     res.status(400).send({error : "User not found"});
   }
 };
+exports.findallUsers = async (req, res) => {
+  try{
+  const user = await User.find();
+  res.status(200).json( user);}
+  catch{
+    res.status(400).send({error : "User not found"});
+  }
+};
 exports.updateUser = async (req, res) => {
   try{
     const user = await User.findById(req.params.id);
