@@ -2,6 +2,8 @@ const { authJwt } = require("../middlewares");
 const controller = require("../controllers/usercontroller");
 const authcontroller = require("../controllers/authcontroller");
 const { models } = require("mongoose");
+const us = require("../models/user");
+
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
@@ -52,11 +54,26 @@ module.exports = function(app) {
     "/api/test/updateuser/:id",
     controller.updateUser
   );
-app.get(
-  "/confirmation/:token",
-  authcontroller.confirm
+app.patch(
+  "/confirmation",async (req, res) => {
+  const _id = req.body._id;
+ 
+  let confirmed = req.body.confirmed
+
+  try {
+    // This part was changed *****
+
+    await us.findByIdAndUpdate(_id,{confirmed: confirmed})
+    res.json('confirmed changed')
+
+    // *******
+  } catch (error) {
+    console.log(error.message)
+  }}
 );
-  
+
+
+
    //delete user by id
   app.delete(
     "/api/test/deleteuser/:id",

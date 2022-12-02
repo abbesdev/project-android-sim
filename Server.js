@@ -1,3 +1,4 @@
+
 const express = require("express");
 const cors = require("cors");
 //import nodemailer from 'nodemailer';
@@ -25,6 +26,13 @@ const transporter = nodemailer.createTransport({
   },
 });
 */
+const routes = require('./routes/subjectroutes.js');
+
+app.use('/subject', routes)
+
+const routesC = require('./routes/classesroutes.js');
+
+app.use('/classes', routesC)
 
 // simple route
 app.get("/", (req, res) => {
@@ -44,13 +52,16 @@ const db = require("./models");
 const Role = db.role;
 
 db.mongoose
-  .connect(`mongodb://localhost:27017/Schoolspace`, {
+  .connect(`mongodb+srv://test-admin:mohamed1999@school-space.knoykw5.mongodb.net`, {
+    dbName: 'school-space',
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
   .then(() => {
-    console.log("Successfully connect to MongoDB.");
     initial();
+    console.log("Successfully connect to MongoDB.");
+ 
+  
   })
   .catch(err => {
     console.error("Connection error", err);

@@ -1,5 +1,5 @@
 module.exports = {
-    HOST: "localhost",
-    PORT: 27017,
+    HOST: "mongodb+srv://school-space.knoykw5.mongodb.net/test",
+
     DB: "Schoolspace"
   };
