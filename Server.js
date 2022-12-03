@@ -38,6 +38,11 @@ const routesC = require('./routes/classesroutes.js');
 
 app.use('/classes', routesC)
 
+const routesCR = require('./routes/classroomroutes.js');
+
+app.use('/classroom', routesCR)
+
+
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to app" });
