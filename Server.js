@@ -5,7 +5,7 @@ const cors = require("cors");
 const nodemailer = require("nodemailer");
 const swaggerUI = require('swagger-ui-express');
 
-const swagDoc = require('./swaggerRoutes/swagger.ts');
+const swagDoc = require('./swaggerRoutes/swaggerTT.ts');
 
 
 bodyParser = require('body-parser');
