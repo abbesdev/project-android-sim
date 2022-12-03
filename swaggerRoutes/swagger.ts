@@ -1,6 +1,6 @@
 
-const getUsersTS = require('./swaggerRoutes/user-swagger.ts');
-const getSubjectsTS = require('./swaggerRoutes/subject-swagger.ts');
+const getUsersTS = require('./user-swagger.ts');
+const getSubjectsTS = require('./subject-swagger.ts');
 
 const swaggerDocument = {
     openapi: '3.0.1',
