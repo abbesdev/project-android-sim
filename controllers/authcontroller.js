@@ -148,12 +148,19 @@ exports.signin = (req, res) => {
       for (let i = 0; i < user.roles.length; i++) {
         authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
       }
+      var authoritiesC = [];
+
+      for (let i = 0; i < user.childrens.length; i++) {
+        authoritiesC.push(user.childrens[i]._id);
+      }
+     
       res.status(200).send({
         id: user._id,
         fullname: user.fullname,
         email: user.email,
         roles: authorities,
-        accessToken: token
+        accessToken: token,
+        childrens: authoritiesC
       });
     });
 };
