@@ -1,5 +1,5 @@
-const getUsersTS = require('./user-swagger.ts');
-const getSubjectsTS = require('./subject-swagger.ts');
+const getUsersTS = require('./user-swagger.js');
+const getSubjectsTS = require('./subject-swagger.js');
 const swaggerDocument = {
     openapi: '3.0.1',
     info: {
