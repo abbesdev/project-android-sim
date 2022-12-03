@@ -3,6 +3,9 @@ const express = require("express");
 const cors = require("cors");
 //import nodemailer from 'nodemailer';
 const nodemailer = require("nodemailer");
+const swaggerUI = require('swagger-ui-express');
+
+const swagDoc = require('./swagger.ts');
 
 
 bodyParser = require('body-parser');
@@ -13,7 +16,6 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
 
 app.use(bodyParser.json());
 /*
@@ -26,6 +28,8 @@ const transporter = nodemailer.createTransport({
   },
 });
 */
+app.use('/openapi',swaggerUI.serve, swaggerUI.setup(swagDoc));
+
 const routes = require('./routes/subjectroutes.js');
 
 app.use('/subject', routes)
