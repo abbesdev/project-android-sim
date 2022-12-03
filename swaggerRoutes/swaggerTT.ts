@@ -51,4 +51,3 @@ const swaggerDocument = {
     }
 }
 
-module.exports = swaggerDocument;
