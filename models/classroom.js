@@ -39,4 +39,4 @@ var Classroom = mongoose.model(
   })
 );
 
-module.exports = Classes;
+module.exports = Classroom;
