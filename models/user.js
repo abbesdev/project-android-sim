@@ -23,6 +23,12 @@ var User = mongoose.model(
         ref: "Children"
       }
     ],
+    classes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Classes"
+      }
+    ],
     resetLink: {
       data: String,
       default: ''
