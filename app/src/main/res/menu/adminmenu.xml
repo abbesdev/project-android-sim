@@ -8,7 +8,9 @@
         android:id="@+id/teachers"
         android:icon="@drawable/ic_baseline_people_outline_24"
         android:title="Teachers list"
+        android:layout_marginBottom="100dp"
         />
+
 
     <item
         android:id="@+id/students"

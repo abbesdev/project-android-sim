@@ -10,7 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import kotlin.coroutines.coroutineContext
 
-class RestApiService {
+class RestApiService {/*
 
     fun addUser(userData: UserInfo, onResult: (UserInfo?) -> Unit){
         val retrofit = ServiceBuilder.buildService(RestApi::class.java)
@@ -51,5 +51,6 @@ class RestApiService {
                 }
 
             })
-    }
+    }*/
+
 }

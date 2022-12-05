@@ -12,7 +12,7 @@ import retrofit2.Response
 import java.io.IOException
 
 class SignUpScreen: AppCompatActivity() {
-
+/*
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,5 +51,5 @@ val fullN = findViewById<EditText>(R.id.testf)
     }
 
 
-
+*/
 }

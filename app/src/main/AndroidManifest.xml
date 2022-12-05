@@ -11,13 +11,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-
+        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".StudentList"
             android:exported="false"
-            android:label="@string/title_activity_student_list"
-            android:theme="@style/NoActionBar" />
+            android:label="@string/title_activity_student_list"/>
+         <!--   android:theme="@style/NoActionBar" -->
         <activity
             android:name=".ParentList"
             android:exported="false" />

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="50dp"
+    android:layout_marginStart="16dp"
+    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="100dp"
+
+
+        android:layout_alignParentBottom="true"
+
+
+
+        app:srcCompat="@drawable/avatar" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        android:layout_marginLeft="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:textSize="12dp"
+            android:text="Good morning"
+            android:textColor="@color/bluemain"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:textSize="18dp"
+            android:text="Mr. Principle"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+
+
+            />
+
+    </LinearLayout>
+
+
+
+
+    <!--
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginEnd="329dp"
+
+
+        app:srcCompat="@drawable/avatar" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+
+
+        android:layout_marginStart="89dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="168dp"
+        android:text="Good Morning,"
+        android:textColor="@color/bluemain"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/admin"
+        android:layout_width="102dp"
+        android:layout_height="26dp"
+        android:layout_alignParentStart="true"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="92dp"
+
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="217dp"
+        android:text="Mr.Principle"
+        android:textColor="@color/black"
+        android:textSize="17dip"
+        android:textStyle="bold" />-->
+
+</LinearLayout>

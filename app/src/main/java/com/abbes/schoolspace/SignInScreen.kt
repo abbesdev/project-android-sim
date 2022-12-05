@@ -10,7 +10,7 @@ import com.abbes.schoolspace.models.UserInfo
 import com.abbes.schoolspace.models.UserSignIn
 import com.abbes.schoolspace.rest.RestApiService
 
-class SignInScreen  : AppCompatActivity() {
+class SignInScreen  : AppCompatActivity() {/*
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.signin_screen)
@@ -36,5 +36,5 @@ var buttonLogin = findViewById<Button>(R.id.button)
             startActivity(intent)
         })
 
-    }
+    }*/
 }

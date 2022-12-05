@@ -23,7 +23,7 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_screen)
         Handler().postDelayed({
-            var intent = Intent(applicationContext, StudentList::class.java)
+            var intent = Intent(applicationContext, TeacherList::class.java)
             startActivity(intent)
         }, 3000)
 
