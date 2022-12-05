@@ -6,6 +6,7 @@ var User = mongoose.model(
     fullname:String,
     email: String,
     password: String,
+
     confirmed: {
       type: Boolean,
       default: false
@@ -14,6 +15,12 @@ var User = mongoose.model(
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Role"
+      }
+    ],
+    childrens: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Children"
       }
     ],
     resetLink: {
