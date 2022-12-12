@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-var Classroom = mongoose.model(
+var Grade = mongoose.model(
     "Grades",
     new  mongoose.Schema({
         students: [
