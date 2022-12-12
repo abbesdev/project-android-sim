@@ -30,10 +30,7 @@ var User = mongoose.model(
         ref: "Classes"
       }
     ],
-    grade: [{
-      type: grade,
-      
-    }],
+   
     resetLink: {
       data: String,
       default: ''

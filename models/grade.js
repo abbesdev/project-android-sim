@@ -1,7 +1,13 @@
 const mongoose = require("mongoose");
-
-const Grade = mongoose.Schema({
- 
+var Classroom = mongoose.model(
+    "Grades",
+    new  mongoose.Schema({
+        students: [
+            {
+              type: mongoose.Schema.Types.ObjectId,
+              ref: "User"
+            }
+          ],
     subject: [
         {
           type: mongoose.Schema.Types.String,
@@ -14,6 +20,6 @@ const Grade = mongoose.Schema({
   
 }
   
-);
+));
 
 module.exports = Grade;
