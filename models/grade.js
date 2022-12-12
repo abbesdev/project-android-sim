@@ -10,7 +10,7 @@ var Grade = mongoose.model(
           ],
     subject: [
         {
-          type: mongoose.Schema.Types.String,
+          type: mongoose.Schema.Types.ObjectId,
           ref: "Subject"
         }
       ],
