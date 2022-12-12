@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const grade = require("./grade");
 
 var User = mongoose.model(
   "User",
@@ -29,6 +30,10 @@ var User = mongoose.model(
         ref: "Classes"
       }
     ],
+    grade: [{
+      type: grade,
+      
+    }],
     resetLink: {
       data: String,
       default: ''

@@ -36,8 +36,9 @@ exports.findallUsers = async (req, res) => {
 exports.updateUser = async (req, res) => {
   try{
     const user = await User.findById(req.params.id);
+    var id = req.params.id
     Object.assign(user, req.body);
-    user.update();
+    await user.update(user, {$set: req.body});
     res.send(user);
   } catch(e) {
     res.status(404).send({error : "User not found"});
