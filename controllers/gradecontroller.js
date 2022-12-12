@@ -33,6 +33,8 @@ export function addOnce(req, res) {
         .create({
             gradeName: req.body.gradeName,
             gradeValue: req.body.gradeValue,
+            students: req.body.students,
+            subject:req.body.subject
 
         })
         .then(newGrade => {
