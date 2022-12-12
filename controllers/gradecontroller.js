@@ -56,3 +56,15 @@ export function getOnce(req, res) {
         res.status(500).json({ error: err });
     });
 }
+
+export function getAllByStudentIdAndSubject(req, res) {
+    Grade
+    .find({ "studentId": req.params.students, "subject":req.params.subject })
+    .then(doc => {
+        res.status(200).json(doc);
+        
+    })
+    .catch(err => {
+        res.status(500).json({ error: err });
+    });
+}

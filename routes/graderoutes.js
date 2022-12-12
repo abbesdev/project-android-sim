@@ -37,7 +37,17 @@ router.get('/getAll', async (req, res) => {
         res.status(500).json({ message: error.message })
     }
 })
+//Get by ID Method
+router.post('/getByStudentAndSubject', async (req, res) => {
+    try {
 
+        const test = await Model.find({ "studentId": req.body.students, "subject":req.body.subject })
+        res.send(test)
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
 //Get by ID Method
 router.get('/getOne/:id', async (req, res) => {
     try {
