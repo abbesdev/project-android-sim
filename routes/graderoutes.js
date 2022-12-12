@@ -8,6 +8,10 @@ router.post('/post', async (req, res) => {
     const data = new Model({
         gradeName: req.body.gradeName,
         gradeValue: req.body.gradeValue,
+        students: req.body.students,
+        subject:req.body.subject
+
+
 
 
       
