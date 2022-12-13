@@ -45,6 +45,10 @@ app.use('/classroom', routesCR)
 const routesG = require('./routes/graderoutes.js');
 
 app.use('/grade', routesG)
+
+const routesH = require('./routes/homeworkroutes.js');
+
+app.use('/homework', routesH)
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to app" });

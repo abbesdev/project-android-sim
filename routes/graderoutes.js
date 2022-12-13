@@ -41,7 +41,7 @@ router.get('/getAll', async (req, res) => {
 router.post('/getByStudentAndSubject', async (req, res) => {
     try {
 
-        const test = await Model.find({ "studentId": req.body.students, "subject":req.body.subject })
+        const test = await Model.find({ $and: [ {"studentId":{$eq: req.body.students}} , {"subject":{$eq: req.body.subject} } ] })
         res.send(test)
     }
     catch (error) {

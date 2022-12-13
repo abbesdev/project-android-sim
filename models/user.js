@@ -30,6 +30,12 @@ var User = mongoose.model(
         ref: "Classes"
       }
     ],
+    homework: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Homework"
+      }
+    ],
    
     resetLink: {
       data: String,
