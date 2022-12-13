@@ -16,10 +16,10 @@ const conn = mongoose.createConnection(mongoURI);
 let gfs; 
 conn.once('open', ()=>{
     gridfsBucket = new mongoose.mongo.GridFSBucket(conn.db, {
-        bucketName: 'homeworkBucket'
+        bucketName: 'uploads'
       })
     gfs = Grid(conn.db, mongoose.mongo);
-    gfs.collection('uploads.files');
+    gfs.collection('uploads');
 })
 
 
@@ -29,14 +29,10 @@ router.post('/api/upload', upload.single('image'), function (req, res, next) {
     console.log(req.file);
   })
 
-  router.get('/api/upload', (req, res)=>{
-    gfs.files.findOne({filename:req.body.filename},(err,file)=>{
-        if(!file || file.length === 0){
-            return res.status(404).json({
-                err:'No file Exists'
-            })
-        }
-            const readStream = gridfsBucket.openDownloadStream(file);
+  router.get('/api/upload/:filename', (req, res)=>{
+    gfs.files.findOne({filename:req.params.filename},(err,file)=>{
+     
+            const readStream = gridfsBucket.openDownloadStreamByName(file.filename);
             readStream.pipe(res)
     })
 })

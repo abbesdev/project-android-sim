@@ -33,4 +33,4 @@ var UploadFile = mongoose.model(
       }
 ));
 
-module.exports = Homework;
+module.exports = UploadFile;
