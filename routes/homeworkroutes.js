@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const mongoURI = `mongodb+srv://test-admin:mohamed1999@school-space.knoykw5.mongodb.net/school-space`;
 const Grid = require('gridfs-stream');
 const {GridFsStorage, GridFsStream, GridFSBucket} = require('multer-gridfs-storage');
+const ModelFile = require('../models/uploads.files.js');
 
 
 //Connecting to mongo 
@@ -32,9 +33,20 @@ router.post('/api/upload', upload.single('image'), function (req, res, next) {
   router.get('/api/upload/:filename', (req, res)=>{
     gfs.files.findOne({filename:req.params.filename},(err,file)=>{
      
-            const readStream = gridfsBucket.openDownloadStreamByName(file.filename);
-            readStream.pipe(res)
+          
+          res.send(file)
+
     })
+})
+router.get('/api/filedata/:id', async(req, res)=>{
+    try {
+        const data = await ModelFile.findById(req.params.id);
+        res.json(data)
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+   
 })
 
 

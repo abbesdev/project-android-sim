@@ -1,28 +1,19 @@
 const mongoose = require("mongoose");
 var UploadFile = mongoose.model(
-    "UploadFile",
-    new  mongoose.Schema({
+    "uploads.files",
+    new  mongoose.Schema(
+      {
         "_id": {
-          "$oid": {
-            "type": "ObjectId"
-          }
+          "type": "ObjectId"
         },
         "length": {
-          "$numberInt": {
-            "type": "Date"
-          }
+          "type": "Number"
         },
         "chunkSize": {
-          "$numberInt": {
-            "type": "Date"
-          }
+          "type": "Number"
         },
         "uploadDate": {
-          "$date": {
-            "$numberLong": {
-              "type": "String"
-            }
-          }
+          "type": "Date"
         },
         "filename": {
           "type": "String"
