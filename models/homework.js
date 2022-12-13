@@ -19,7 +19,12 @@ var Homework = mongoose.model(
     
    homeworkDescription: {type:String},
 
-      homeworkFiles: {type :File},
+      homeworkFiles: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "uploads.files"
+        }
+      ],
       homeworkStatus: {type :Boolean},
       homeworkDeadline: {type :Date},
 

@@ -2,6 +2,45 @@ const express = require('express');
 const { verifyToken } = require('../middlewares/authJwt.js');
 const Model = require('../models/homework.js');
 const router = express.Router();
+const upload = require('../config/fileupload')
+const mongoose = require('mongoose');
+const mongoURI = `mongodb+srv://test-admin:mohamed1999@school-space.knoykw5.mongodb.net/school-space`;
+const Grid = require('gridfs-stream');
+const {GridFsStorage, GridFsStream, GridFSBucket} = require('multer-gridfs-storage');
+
+
+//Connecting to mongo 
+const conn = mongoose.createConnection(mongoURI);
+
+//Init gfs 
+let gfs; 
+conn.once('open', ()=>{
+    gridfsBucket = new mongoose.mongo.GridFSBucket(conn.db, {
+        bucketName: 'homeworkBucket'
+      })
+    gfs = Grid(conn.db, mongoose.mongo);
+    gfs.collection('uploads.files');
+})
+
+
+
+
+router.post('/api/upload', upload.single('image'), function (req, res, next) {
+    console.log(req.file);
+  })
+
+  router.get('/api/upload', (req, res)=>{
+    gfs.files.findOne({filename:req.body.filename},(err,file)=>{
+        if(!file || file.length === 0){
+            return res.status(404).json({
+                err:'No file Exists'
+            })
+        }
+            const readStream = gridfsBucket.openDownloadStream(file);
+            readStream.pipe(res)
+    })
+})
+
 
 //Post Method
 router.post('/post', async (req, res) => {
