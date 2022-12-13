@@ -19,7 +19,7 @@ var Homework = mongoose.model(
     
    homeworkDescription: {type:String},
 
-      homeworkFiles: {type :FileList},
+      homeworkFiles: {type :File},
       homeworkStatus: {type :Boolean},
       homeworkDeadline: {type :Date},
 
