@@ -30,7 +30,7 @@ router.post('/api/upload', upload.single('image'), function (req, res, next) {
     console.log(req.file);
   })
 
-  router.get('/api/upload/:filename', (req, res)=>{
+router.get('/api/upload/:filename', (req, res)=>{
     gfs.files.findOne({filename:req.params.filename},(err,file)=>{
      
           
