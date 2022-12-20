@@ -1,6 +1,7 @@
-package com.abbes.schoolspace
+package com.abbes.schoolspace.ParentScreens
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.os.StrictMode
@@ -8,14 +9,21 @@ import android.os.StrictMode.ThreadPolicy
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.abbes.schoolspace.R
 import com.abbes.schoolspace.adapters.CourseAdapter
+import com.abbes.schoolspace.adapters.CustomAdapter
+import com.abbes.schoolspace.models.ClassroomResponse
+import com.abbes.schoolspace.models.ClassroomResponseItem
 import com.abbes.schoolspace.models.Subject
 import com.abbes.schoolspace.models.SubjectItem
 import com.abbes.schoolspace.rest.RestApi
+import com.abbes.schoolspace.rest.ServiceBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Retrofit
@@ -60,7 +68,9 @@ class HomeFragment : Fragment() {
     }
 
 
-
+    private var lv: ListView? = null
+    private var customeAdapter: CustomAdapter? = null
+    var listVertical: ArrayList<ClassroomResponseItem> = arrayListOf()
 
      var list: ArrayList<SubjectItem> = arrayListOf()
     val adapter = CourseAdapter(list, context)
@@ -68,19 +78,27 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         super.onCreate(savedInstanceState)
+
         if (Build.VERSION.SDK_INT > 9) {
             val policy = ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(policy)
         }
+        val preferences = this.activity?.getSharedPreferences("Login", Context.MODE_PRIVATE)
+
+        val unm = preferences?.getString("Unm", "not added yet")
+        val fn = requireActivity().intent.getStringExtra("fullname") // OR Double quotes
+
+val textFn : (TextView) = view.findViewById(R.id.textView6)
+textFn.setText(unm)
 
         list = ArrayList()
 
         val recyclerView = requireView().findViewById<RecyclerView>(R.id.recycleView)
         val retrofit:Retrofit= Retrofit.Builder()
-            .baseUrl("http://172.16.5.59:8080/")
+            .baseUrl("https://project-android-sim.vercel.app/")
             .addConverterFactory(GsonConverterFactory.create()).build()
 
-        val api:RestApi=retrofit.create(RestApi::class.java)
+        val api:RestApi=ServiceBuilder.buildService(RestApi::class.java)
 val call:Call<Subject> = api.getAllSubjects()
 
 call.enqueue(object : Callback<Subject?>{
@@ -108,7 +126,37 @@ call.enqueue(object : Callback<Subject?>{
 
 
 
+        lv = view.findViewById(R.id.userlistt) as ListView
 
+        val call2: Call<ClassroomResponse> = api.getAllClassrooms()
+
+        call2.enqueue(
+            object : Callback<ClassroomResponse?> {
+
+                override fun onResponse(
+                    call: Call<ClassroomResponse?>,
+                    response: retrofit2.Response<ClassroomResponse?>
+                ) {
+                    Toast.makeText(context, response.code().toString(), Toast.LENGTH_LONG).show()
+
+                    if (response.isSuccessful) {
+                        listVertical.clear()
+                        for (myData in response.body()!!) {
+                            listVertical.add(myData)
+                        }
+
+
+                        customeAdapter = CustomAdapter(requireContext(), listVertical!!)
+                        lv!!.adapter = customeAdapter
+
+                    }
+                }
+
+                override fun onFailure(call: Call<ClassroomResponse?>, t: Throwable) {
+                    Toast.makeText(context, "error hereeee:::", Toast.LENGTH_LONG).show()
+                }
+
+            })
 
 
 

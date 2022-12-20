@@ -4,59 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".ParentScreens.ProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/linearLayout3"
-            android:layout_width="140dp"
-            android:layout_height="58dp"
+        <TextView
+            android:id="@+id/texttitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
 
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
+
+            android:text="My Profile"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/texttitle1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-
-
-                android:text="My Profile"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <ImageButton
-                android:id="@+id/imageButton1"
-                style="@style/Widget.AppCompat.ImageButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#00FFFFFF"
-                android:minHeight="48dp"
-                android:src="@drawable/ic_baseline_settings_24"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-
-        </LinearLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="110sp"
             android:layout_height="110sp"
-            android:layout_marginTop="32dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="10sp"
+
             android:layout_weight="1"
+            app:layout_constraintBottom_toTopOf="@+id/texttitle11"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintTop_toBottomOf="@+id/texttitle1"
             app:srcCompat="@mipmap/ic_launcher_foreground"
             tools:src="@tools:sample/avatars" />
 
@@ -90,40 +72,44 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/texttitle11" />
 
-        <LinearLayout android:id="@+id/linearRoweditmyinfo"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/editMyInfoButton"
             style="@style/groupStylegray_200_14cornerRadius"
-            android:layout_marginTop="32sp"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32sp"
             android:gravity="center_horizontal"
+            android:clickable="true"
 
-            app:layout_constraintTop_toBottomOf="@+id/texttitle111"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/texttitle111">
+
             <TextView
-                android:ellipsize="end"
                 android:id="@+id/txtEditmyinfo"
+                style="@style/Widget.AppCompat.TextView.SpinnerItem"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24sp"
                 android:layout_marginStart="26sp"
                 android:layout_marginTop="25sp"
-                android:layout_weight="0.92"
-                android:layout_width="0dp"
+                android:layout_marginBottom="24sp"
                 android:singleLine="true"
-                android:text="Edit my infos"
-                 />
-            <ImageView android:id="@+id/imageArrowleft"
+                android:text="Edit my infos" />
+
+            <ImageView
+                android:id="@+id/imageArrowleft"
+                android:layout_width="20sp"
                 android:layout_height="20sp"
-                android:layout_marginBottom="26sp"
-                android:layout_marginEnd="27sp"
                 android:layout_marginStart="180sp"
                 android:layout_marginTop="28sp"
-                android:layout_width="20sp"
+                android:layout_marginEnd="27sp"
+                android:layout_marginBottom="26sp"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-                />
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
         </LinearLayout>
         <LinearLayout android:id="@+id/linearRoweditmyinfo3"
-            app:layout_constraintTop_toBottomOf="@+id/linearRoweditmyinfo"
+            app:layout_constraintTop_toBottomOf="@+id/editMyInfoButton"
             android:layout_height="wrap_content"
             style="@style/groupStylegray_200_14cornerRadius"
             android:layout_marginTop="4sp"
@@ -132,18 +118,19 @@
 
 
             android:orientation="horizontal" >
+
             <TextView
-                android:ellipsize="end"
                 android:id="@+id/txtEditmyinfo1"
+                style="@style/Widget.AppCompat.TextView.SpinnerItem"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24sp"
                 android:layout_marginStart="26sp"
                 android:layout_marginTop="25sp"
+                android:layout_marginBottom="24sp"
                 android:layout_weight="0.92"
-                android:layout_width="0dp"
+                android:ellipsize="end"
                 android:singleLine="true"
-                android:text="Paiements"
-                />
+                android:text="Paiements" />
             <ImageView android:id="@+id/imageArrowleft1"
                 android:layout_height="20sp"
                 android:layout_marginBottom="26sp"
@@ -157,6 +144,7 @@
         </LinearLayout>
         <LinearLayout android:id="@+id/linearRoweditmyinfo1"
             app:layout_constraintTop_toBottomOf="@+id/linearRoweditmyinfo3"
+            android:clickable="true"
 
             android:layout_height="wrap_content"
             style="@style/groupStylegray_200_14cornerRadius"
@@ -164,18 +152,19 @@
             android:layout_width="match_parent"
             android:gravity="center_horizontal"
             android:orientation="horizontal" >
+
             <TextView
-                android:ellipsize="end"
                 android:id="@+id/txtEditmyinfo2"
+                style="@style/Widget.AppCompat.TextView.SpinnerItem"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24sp"
                 android:layout_marginStart="26sp"
                 android:layout_marginTop="25sp"
+                android:layout_marginBottom="24sp"
                 android:layout_weight="0.92"
-                android:layout_width="0dp"
+                android:ellipsize="end"
                 android:singleLine="true"
-                android:text="Log out"
-                />
+                android:text="Log out" />
             <ImageView android:id="@+id/imageArrowleft2"
                 android:layout_height="20sp"
                 android:layout_marginBottom="26sp"

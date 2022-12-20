@@ -11,9 +11,9 @@ import android.widget.TextView
 import com.abbes.schoolspace.ParentScreens.DetailActivity
 import com.abbes.schoolspace.R
 import com.abbes.schoolspace.models.*
-import java.util.ArrayList
+import kotlin.collections.ArrayList
 
-class CustomAdapter(private val context: Context, private val imageModelArrayList: ArrayList<ClassroomResponseItem>) : BaseAdapter() {
+class CustomAdapterViewPager(private val context: Context, private val imageModelArrayList: ArrayList<StudentWithGradeByIdModelItem>) : BaseAdapter() {
 
     override fun getViewTypeCount(): Int {
         return count
@@ -59,26 +59,9 @@ class CustomAdapter(private val context: Context, private val imageModelArrayLis
             holder = convertView.tag as ViewHolder
         }
 
-        holder.tvname!!.setText(imageModelArrayList[position].classroomTitle)
+        holder.tvname!!.setText(imageModelArrayList[position].gradeName + " : "+imageModelArrayList[position].gradeValue)
         holder.iv!!.setImageResource(R.drawable.high_school_physics_120415_large)
-        if (convertView != null) {
-            convertView.setOnClickListener{
-                val intent = Intent(convertView.context, DetailActivity::class.java)
-                intent.apply {
 
-                    putExtra(NAME, imageModelArrayList[position].classroomTitle);
-                    putExtra(PICTURE, R.drawable.high_school_physics_120415_large);
-                    if(imageModelArrayList[position].teacher.isNotEmpty()) {
-                        putExtra(TEACHER, imageModelArrayList[position].teacher.first());
-                        putExtra(SUBJECT, imageModelArrayList[position].subject.first());
-                    }else  if(imageModelArrayList[position].teacher.isEmpty()) {
-                        putExtra(TEACHER, "empty");
-                    }
-                }
-
-                convertView.context.startActivity(intent)
-            }
-        }
         return convertView
     }
 

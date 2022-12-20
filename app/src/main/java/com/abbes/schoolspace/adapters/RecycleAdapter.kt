@@ -5,8 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.net.Uri
-import android.os.AsyncTask
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +12,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.abbes.schoolspace.DetailActivity
+import com.abbes.schoolspace.ParentScreens.DetailActivity
 import com.abbes.schoolspace.R
 import com.abbes.schoolspace.models.NAME
 import com.abbes.schoolspace.models.PICTURE
@@ -67,17 +65,7 @@ override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         holder.subjectText.setText(courseList.get(position).nameSubject);
         holder.subjectImage.setImageBitmap( getImageBitmap(newurl.toString()))
 
-        holder.itemView.setOnClickListener{
-            val intent = Intent(holder.itemView.context, DetailActivity::class.java)
-            intent.apply {
 
-                putExtra(NAME, name);
-                putExtra(PICTURE,image)
-
-            }
-
-            holder.itemView.context.startActivity(intent)
-        }
 
     }
 

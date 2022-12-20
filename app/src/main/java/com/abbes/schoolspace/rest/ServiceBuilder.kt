@@ -8,10 +8,8 @@ object ServiceBuilder {
     private val client = OkHttpClient.Builder().build()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://172.16.5.59:8080/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(client)
-        .build()
+        .baseUrl("https://project-android-sim.vercel.app/")
+        .addConverterFactory(GsonConverterFactory.create()).build()
 
     fun<T> buildService(service: Class<T>): T{
         return retrofit.create(service)

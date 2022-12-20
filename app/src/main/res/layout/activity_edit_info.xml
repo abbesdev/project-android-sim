@@ -3,61 +3,89 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
-
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".EditInfoActivity">
 
     <TextView
-        android:id="@+id/sign_in_to_"
-        android:layout_width="0dp"
+        android:id="@+id/textView3"
+        style="@style/Widget.AppCompat.TextView.SpinnerItem"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="16sp"
         android:layout_marginTop="30sp"
-        android:gravity="top"
-        android:text="@string/sign_in_to_"
-        android:textAppearance="@style/sign_in_to_"
+        android:text="Edit My Infos"
+
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:fontFamily="sans-serif-black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/sign_in_to_2"
+        android:id="@+id/t1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="20sp"
         android:gravity="top"
-        android:lineSpacingExtra="7sp"
-        android:text="@string/sign_in_to_2"
-        android:textAppearance="@style/sign_in_to_2"
-        android:translationY="-3.57sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_in_to_" />
-
-    <TextView
-        android:id="@+id/email_addre"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:gravity="top"
-        android:text="@string/email_addre"
+        android:text="Full Name"
         android:textAppearance="@style/email_addre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_in_to_2" />
+
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/e1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+
+
+        app:boxCornerRadiusBottomEnd="8sp"
+        app:boxCornerRadiusBottomStart="8sp"
+        app:boxCornerRadiusTopEnd="8sp"
+        app:boxCornerRadiusTopStart="8sp"
+        app:boxStrokeColor="@color/fieldborder"
+        app:boxStrokeWidth="1sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/t1">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ee1"
+
+            android:layout_width="match_parent"
+            android:layout_height="48sp"
+            android:hint="Update your fullname"
+
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/t2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16sp"
+        android:gravity="top"
+        android:text="Email"
+        android:textAppearance="@style/email_addre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/e1" />
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:id="@+id/outlinedTextField"
+        android:id="@+id/e2"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -75,20 +103,68 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintTop_toBottomOf="@+id/email_addre">
+        app:layout_constraintTop_toBottomOf="@+id/t2">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/androidemail"
+            android:id="@+id/ee2"
 
             android:layout_width="match_parent"
             android:layout_height="48sp"
-            android:hint="Enter your email address"
-            android:inputType="textEmailAddress"
+            android:hint="Update your email"
+
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/t3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16sp"
+        android:gravity="top"
+        android:text="Phone Number"
+        android:textAppearance="@style/email_addre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/e2" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:id="@+id/e3"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+
+
+        app:boxCornerRadiusBottomStart="8sp"
+        app:boxCornerRadiusBottomEnd="8sp"
+        app:boxCornerRadiusTopEnd="8sp"
+        app:boxCornerRadiusTopStart="8sp"
+        app:boxStrokeColor="@color/fieldborder"
+        app:boxStrokeWidth="1sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/t3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ee3"
+
+            android:layout_width="match_parent"
+            android:layout_height="48sp"
+            android:hint="Update your phone number"
+
             android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
     <TextView
-        android:id="@+id/password"
+        android:id="@+id/t4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -100,11 +176,11 @@
         android:textAppearance="@style/email_addre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField" />
+        app:layout_constraintTop_toBottomOf="@+id/e3" />
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:id="@+id/outlinedTextField2"
+        android:id="@+id/e4"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -122,32 +198,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintTop_toBottomOf="@+id/password">
+        app:layout_constraintTop_toBottomOf="@+id/t4">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/androidpass"
+            android:id="@+id/ee4"
 
             android:layout_width="match_parent"
             android:layout_height="48sp"
-            android:hint="Enter your password"
+            android:hint="Update your password"
 
             android:inputType="textPassword"
             android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:minHeight="48dp"
-        android:text="Remember me"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField2" />
 
     <Button
         android:id="@+id/button"
@@ -156,39 +220,25 @@
         android:layout_margin="16sp"
 
         android:background="@color/purple_700"
-        android:text="Sign in"
+        android:text="Save"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/sign_in_to_" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16sp"
-        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/textView"
-            style="@style/email_addre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Don't have an account ?" />
+        app:layout_constraintTop_toBottomOf="@+id/e4" />
 
-        <TextView
-            android:id="@+id/textView2"
-            style="@style/signuptext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=" Sign up" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textView4"
+        style="@style/Widget.AppCompat.TextView.SpinnerItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.525" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

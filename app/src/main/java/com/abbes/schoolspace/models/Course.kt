@@ -4,6 +4,9 @@ import androidx.annotation.DrawableRes
 
 const val PICTURE = "PICTURE"
 const val NAME = "NAME"
+const val TEACHER = "TEACHER"
+const val SUBJECT = "SUBJECT"
+
 
 
 data class Course(
@@ -13,5 +16,6 @@ data class Course(
         val coursePic: Int,
 
         val courseName: String,
+
 
     )
