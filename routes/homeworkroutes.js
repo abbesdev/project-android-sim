@@ -14,7 +14,7 @@ const ModelFile = require('../models/uploads.files.js');
 const conn = mongoose.createConnection(mongoURI);
 
 //Init gfs 
-let gfs; 
+let gfs;
 conn.once('open', ()=>{
     gridfsBucket = new mongoose.mongo.GridFSBucket(conn.db, {
         bucketName: 'uploads'
@@ -22,8 +22,6 @@ conn.once('open', ()=>{
     gfs = Grid(conn.db, mongoose.mongo);
     gfs.collection('uploads');
 })
-
-
 
 
 router.post('/api/upload', upload.single('image'), function (req, res, next) {
