@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.abbes.schoolspace">
+    package="com.abbes.schoolspace" >
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,14 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Schoolspace"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name=".StudentScreens.StudentScreen"
+            android:exported="false" />
+
         <activity
             android:name=".EditInfoActivity"
             android:exported="false"
             android:label="@string/title_activity_settings" />
         <activity
             android:name=".SplashScreen"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,23 +32,23 @@
         </activity>
         <activity
             android:name=".OnboardingScreen"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".SignInScreen"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".SignUpScreen"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".NextStepScreen"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ParentScreens.MainScreen"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ParentScreens.DetailActivity"
-            android:parentActivityName=".ParentScreens.MainScreen"
-            android:exported="true"></activity>
+            android:exported="true"
+            android:parentActivityName=".ParentScreens.MainScreen" />
     </application>
 
 </manifest>

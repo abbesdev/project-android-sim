@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.abbes.schoolspace.ParentScreens.MainScreen
+import com.abbes.schoolspace.StudentScreens.StudentScreen
 import com.abbes.schoolspace.models.UserSignIn
 import com.abbes.schoolspace.models.UserSignInResponse
 import com.abbes.schoolspace.rest.RestApi
@@ -55,12 +56,28 @@ class SignInScreen  : AppCompatActivity() {
                                     Ed.putString("Unm", addedUser.fullname)
                                     Ed.putString("userid",addedUser.id)
                                     Ed.putString("Unm1", addedUser.email)
+                                    Ed.putString("roletype",addedUser.roles.first().toString())
                                     Ed.putString("Unm2", addedUser.childrens.count().toString())
                                     Ed.putString("Unm3", addedUser.childrens.first().toString())
 
                                     Ed.commit()
                                 }
                                 startActivity(intent)
+                            }else  if(addedUser.roles.contains("ROLE_STUDENT")){
+                                var intent1 = Intent(applicationContext, StudentScreen::class.java)
+                                if (addedUser != null && remmeberme.isChecked) {
+                                   intent.putExtra("fullname",addedUser.fullname.toString())
+                                    val sp = getSharedPreferences("Login", MODE_PRIVATE)
+                                    val Ed = sp.edit()
+                                    Ed.putString("Unm", addedUser.fullname)
+                                    Ed.putString("roletype",addedUser.roles.first().toString())
+
+                                    Ed.putString("userid",addedUser.id)
+                                    Ed.putString("Unm1", addedUser.email)
+
+                                    Ed.commit()
+                                }
+                                startActivity(intent1)
                             }
                             else
                             {

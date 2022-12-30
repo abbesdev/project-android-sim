@@ -152,6 +152,8 @@ class ReportFragment : Fragment() {
 
                             override fun onFailure(call: Call<UserByIdModel?>, t: Throwable) {
                                 Toast.makeText(context, "error hereeee:::", Toast.LENGTH_LONG).show()
+                                Toast.makeText(context, t.toString(), Toast.LENGTH_LONG).show()
+
                             }
 
                         })
