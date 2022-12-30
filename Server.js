@@ -42,6 +42,10 @@ const routesCR = require('./routes/classroomroutes.js');
 
 app.use('/classroom', routesCR)
 
+const routesTT = require('./routes/timetableroutes.js');
+
+app.use('/timetable', routesTT)
+
 
 // simple route
 app.get("/", (req, res) => {

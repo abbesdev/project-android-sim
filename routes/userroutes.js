@@ -49,6 +49,40 @@ module.exports = function(app) {
     "/api/test/getallusers",
     controller.findallUsers
   );
+  // get users number
+  app.get(
+    "/api/test/countusers",
+    controller.countUsers
+  );
+   // get students number
+   app.get(
+    "/api/test/countstudents",
+    controller.countStudents
+  );
+   // get parents number
+   app.get(
+    "/api/test/countparents",
+    controller.countParents
+  );
+
+  // get teachers number
+  app.get(
+    "/api/test/countteachers",
+    controller.countTeachers
+  );
+
+  app.get(
+    "/api/test/getall",
+    controller.countTeachers
+  );
+
+  // update confirmed to true
+  app.patch(
+    "/api/test/confirmation/:id",
+    controller.confirmation
+  );
+    
+
   //update user by id
   app.patch(
     "/api/test/updateuser/:id",
