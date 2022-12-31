@@ -30,7 +30,12 @@ var Classroom = mongoose.model(
           ref: "Subject"
         }
       ],
-
+      homework: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Homework"
+        }
+      ],
     
     
    
