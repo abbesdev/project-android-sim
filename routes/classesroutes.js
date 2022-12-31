@@ -20,7 +20,7 @@ router.post('/post', async (req, res) => {
 })
 
 //Get all Method
-router.get('/getAll',[verifyToken], async (req, res) => {
+router.get('/getAll', async (req, res) => {
     try {
 
         const data = await Model.find();

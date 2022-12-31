@@ -47,6 +47,10 @@ const routesCR = require('./routes/classroomroutes.js');
 app.use('/classroom', routesCR)
 
 const routesG = require('./routes/graderoutes.js');
+const routesTT = require('./routes/timetableroutes.js');
+
+app.use('/timetable', routesTT)
+
 
 app.use('/grade', routesG)
 
