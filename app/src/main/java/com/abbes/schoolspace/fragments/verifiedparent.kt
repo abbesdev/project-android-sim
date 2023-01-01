@@ -104,6 +104,7 @@ class verifiedparent : Fragment() {
         //getUserdata()
         getUsers()
     }
+    /*
     private fun getUserdata() {
 
         for(i in fullname.indices){
@@ -116,7 +117,7 @@ class verifiedparent : Fragment() {
         val adapter = StudentAdapter(newArrayList)
         newRecylerview.adapter = adapter
 
-    }
+    }*/
     private fun getUsers(){
         newArrayList2 = arrayListOf<UsersInfItem>()
         newArrayList3 = arrayListOf<UsersInfItem>()

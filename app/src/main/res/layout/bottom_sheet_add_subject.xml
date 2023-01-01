@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/sidebarmenu"
+
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Subject"
+        android:textSize="20dip"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="70dp"/>
+
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="match_parent"
+        android:hint="   Enter the subject"
+
+
+        android:layout_marginBottom="10dp"
+        android:layout_height="48dp"
+        android:background="@drawable/spinner"/>
+
+    <TextView
+        android:id="@+id/warningsubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:text="*Please select a subject" />
+
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Class"
+        android:textSize="20dip"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginBottom="10dp"/>
+
+    <Spinner
+        android:id="@+id/classes"
+        android:layout_width="match_parent"
+        android:hint="   Enter the class"
+
+        android:layout_marginBottom="10dp"
+        android:layout_height="48dp"
+        android:background="@drawable/spinner"/>
+    <TextView
+        android:id="@+id/warningclass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:text="*Please select a class" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pick start time"
+        android:textSize="20dip"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginBottom="10dp"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+
+        >
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="left"
+            android:text="00:00"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:layout_gravity="right"
+            android:layout_margin="50dp"/>
+
+
+
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pick end time"
+        android:textSize="20dip"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginBottom="10dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+
+        >
+
+        <TextView
+            android:id="@+id/timeend"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="left"
+            android:text="00:00"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:layout_gravity="right"
+            android:layout_margin="50dp"/>
+
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/warning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:text="*Start time should be Before end time" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pick Day"
+        android:textSize="20dip"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginBottom="10dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+
+        >
+
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="left"
+            android:text="01-01-2022"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:layout_gravity="right"
+            android:layout_margin="25dp"/>
+
+
+
+
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/warning2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:text="*Selected date is invalid" />
+
+    <EditText
+        android:id="@+id/editTextTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time" />
+
+    <Button
+        android:id="@+id/addclass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add class"
+        android:textColor="@color/bluemain"
+        android:background="@drawable/button"
+        />
+
+</LinearLayout>

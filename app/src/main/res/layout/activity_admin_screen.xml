@@ -8,7 +8,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminScreen">
+    tools:context=".adminscreeens.AdminScreen">
 
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -231,7 +231,7 @@
             app:layout_constraintHorizontal_bias="0.0" />
 
         <TextView
-            android:id="@+id/totalstudensnum"
+            android:id="@+id/totalstudentsnum"
             android:layout_width="101dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"

@@ -1,4 +1,4 @@
-package com.abbes.schoolspace
+package com.abbes.schoolspace.adminscreeens
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
+import com.abbes.schoolspace.R
 import com.abbes.schoolspace.adapters.RecycleAdapter.ViewPagerAdapter
 import com.abbes.schoolspace.adapters.StudentAdapter
 import com.abbes.schoolspace.fragments.notverifiedparent
@@ -60,7 +61,7 @@ class ParentList : AppCompatActivity() {
 
 
         newArrayList = arrayListOf<UserInfo>()
-        getUserdata()
+        //getUserdata()
 
 
 
@@ -70,13 +71,14 @@ class ParentList : AppCompatActivity() {
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
         val navView : NavigationView = findViewById(R.id.nav_view)
 
-        toggle = ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close)
+        toggle = ActionBarDrawerToggle(this,drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         var intent1 = Intent(applicationContext, TeacherList::class.java)
         var intent2 = Intent(applicationContext, StudentList::class.java)
 
         var intent3 = Intent(applicationContext, ParentList::class.java)
+        var intent4 = Intent(applicationContext, TimeTableScreen::class.java)
 
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -85,6 +87,7 @@ class ParentList : AppCompatActivity() {
                 R.id.teachers -> startActivity(intent1)
                 R.id.students -> startActivity(intent2)
                 R.id.parents -> startActivity(intent3)
+                R.id.timetables -> startActivity(intent4)
             }
             true
         }
@@ -107,7 +110,7 @@ class ParentList : AppCompatActivity() {
 
 
     }
-    private fun getUserdata() {
+ /*   private fun getUserdata() {
 
         for(i in fullname.indices){
 
@@ -118,7 +121,7 @@ class ParentList : AppCompatActivity() {
         val adapter = StudentAdapter(newArrayList)
         newRecylerview.adapter = adapter
 
-    }
+    }*/
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

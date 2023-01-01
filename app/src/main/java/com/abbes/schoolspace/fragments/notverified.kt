@@ -6,10 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
@@ -100,6 +97,8 @@ class notverified : Fragment() {
         confirmed = arrayOf(true,false)
 
 
+
+
         newRecylerview = view.findViewById(R.id.recyclerView)
         newRecylerview.layoutManager = LinearLayoutManager(getActivity())
         newRecylerview.setHasFixedSize(true)
@@ -107,10 +106,13 @@ class notverified : Fragment() {
 
         newArrayList = arrayListOf<UserInfo>()
        // getUserdata()
+
+
+
         getUsers()
 
     }
-    private fun getUserdata() {
+ /*   private fun getUserdata() {
 
         for(i in fullname.indices){
             if(confirmed[i]==false){
@@ -122,7 +124,7 @@ class notverified : Fragment() {
         val adapter = StudentAdapter(newArrayList)
         newRecylerview.adapter = adapter
 
-    }
+    }*/
     private fun getUsers(){
         newArrayList2 = arrayListOf<UsersInfItem>()
         newArrayList3 = arrayListOf<UsersInfItem>()

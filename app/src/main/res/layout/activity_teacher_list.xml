@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:id="@+id/drawerLayout"
 
-    tools:context=".TeacherList">
+    tools:context=".adminscreeens.TeacherList">
 
 
 <androidx.constraintlayout.widget.ConstraintLayout
