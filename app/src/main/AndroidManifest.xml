@@ -21,6 +21,30 @@
             android:name=".EditInfoActivity"
             android:exported="false"
             android:label="@string/title_activity_settings" />
+        android:theme="@style/Theme.Schoolspace"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".adminscreeens.TimeTableDetailsScreen"
+            android:exported="false" />
+        <activity
+            android:name=".adminscreeens.TimeTableScreen"
+            android:exported="false" />
+        <activity
+            android:name=".adminscreeens.StudentList"
+            android:exported="false"
+            android:label="@string/title_activity_student_list" /> <!-- android:theme="@style/NoActionBar" -->
+        <activity
+            android:name=".adminscreeens.ParentList"
+            android:exported="false" />
+        <activity
+            android:name=".adminscreeens.TeacherList"
+            android:exported="false" />
+        <activity
+            android:name=".adminscreeens.AdminScreen"
+            android:exported="false" />
+        <activity
+            android:name=".UserList"
+            android:exported="false" />
         <activity
             android:name=".SplashScreen"
             android:exported="true" >
