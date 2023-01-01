@@ -5,19 +5,19 @@ import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.os.StrictMode
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.abbes.schoolspace.R
 import com.abbes.schoolspace.adapters.AdapterHomework
-import com.abbes.schoolspace.adapters.CourseAdapter
-import com.abbes.schoolspace.adapters.CustomAdapter
+import com.abbes.schoolspace.adapters.RecycleAdapterTimetable
 import com.abbes.schoolspace.models.*
 import com.abbes.schoolspace.rest.RestApi
 import com.abbes.schoolspace.rest.ServiceBuilder
@@ -25,6 +25,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.ZoneOffset.UTC
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,8 +73,8 @@ class HomeStudentFragment : Fragment() {
     private var customeAdapter: AdapterHomework? = null
     var listVertical: ArrayList<HomeworkItem> = arrayListOf()
 
-    var list: ArrayList<SubjectItem> = arrayListOf()
-    val adapter = CourseAdapter(list, context)
+    var list: ArrayList<TimetableItem> = arrayListOf()
+    val adapter = RecycleAdapterTimetable(list, context)
     val layoutManager = LinearLayoutManager(context)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -95,25 +100,33 @@ class HomeStudentFragment : Fragment() {
             .addConverterFactory(GsonConverterFactory.create()).build()
 
         val api: RestApi = ServiceBuilder.buildService(RestApi::class.java)
-        val call: Call<Subject> = api.getAllSubjects()
+        val call: Call<Timetable> = api.getAllTimetable()
 
-        call.enqueue(object : Callback<Subject?> {
+        call.enqueue(object : Callback<Timetable?> {
+            @RequiresApi(Build.VERSION_CODES.O)
             @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(call: Call<Subject?>, response: retrofit2.Response<Subject?>) {
+            override fun onResponse(call: Call<Timetable?>, response: retrofit2.Response<Timetable?>) {
                 if(response.isSuccessful){
                     list.clear()
+                    val current = LocalDate.now()
+                    Toast.makeText(context, current.toString(), Toast.LENGTH_LONG).show()
+
+
                     for(myData in response.body()!!) {
-                        list.add(myData)
+                        val parts: List<String> = myData.startdate.split("T")
+                        if(parts[0].contains(current.toString())){
+
+                            list.add(myData)}
                     }
                     recyclerView.layoutManager = layoutManager
                     adapter.notifyDataSetChanged()
                     recyclerView.layoutManager =
                         LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-                    recyclerView.adapter= CourseAdapter(list,context)
+                    recyclerView.adapter= RecycleAdapterTimetable(list,context)
                 }
             }
 
-            override fun onFailure(call: Call<Subject?>, t: Throwable) {
+            override fun onFailure(call: Call<Timetable?>, t: Throwable) {
                 Toast.makeText(context, "error hereeee:::", Toast.LENGTH_LONG).show()
             }
 

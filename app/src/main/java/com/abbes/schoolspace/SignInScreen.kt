@@ -71,6 +71,7 @@ class SignInScreen  : AppCompatActivity() {
                                     val Ed = sp.edit()
                                     Ed.putString("Unm", addedUser.fullname)
                                     Ed.putString("roletype",addedUser.roles.first().toString())
+                                    Ed.putString("test",addedUser.roles.first().toString().lowercase())
 
                                     Ed.putString("userid",addedUser.id)
                                     Ed.putString("Unm1", addedUser.email)

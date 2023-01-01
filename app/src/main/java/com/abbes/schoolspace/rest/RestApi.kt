@@ -35,6 +35,8 @@ interface RestApi {
     @GET("homework/getAll")
     fun getHomeworkList(): Call<Homework>
 
+    @GET("timetable/getAll")
+    fun getAllTimetable(): Call<Timetable>
 
     @POST("grade/getByStudentAndSubject")
     fun getStudentGradesById(@Body gradeData : GradeVerifyPostRequest): Call<StudentWithGradeByIdModel>

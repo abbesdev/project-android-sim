@@ -19,7 +19,8 @@
             android:layout_height="100dp"
             android:scaleType="centerCrop"
 
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            app:srcCompat="@drawable/high_school_physics_120415_large"
+            tools:srcCompat="@drawable/high_school_physics_120415_large" />
 
         <TextView
             android:id="@+id/textDown"

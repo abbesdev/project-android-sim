@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class UserByIdModel(
     @SerializedName("childrens")
     val childrens: List<Any>,
+
     @SerializedName("classes")
     val classes: List<Any>,
     @SerializedName("confirmed")
