@@ -4,7 +4,7 @@ const Model = require('../models/classroom.js');
 const router = express.Router();
 
 //Post Method
-router.post('/post',[verifyToken], async (req, res) => {
+router.post('/post', async (req, res) => {
     const data = new Model({
         classroomTitle: req.body.classroomTitle
       
