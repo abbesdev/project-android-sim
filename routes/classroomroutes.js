@@ -19,6 +19,18 @@ router.post('/post',[verifyToken], async (req, res) => {
     }
 })
 
+//Get by ID Method
+router.get('/getByTeacherId/:teacherId', async (req, res) => {
+    try {
+
+        const test = await Model.find({"teacher":{$eq: req.params.teacherId}})
+        res.send(test)
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
+
 //Get all Method
 router.get('/getAll', async (req, res) => {
     try {
