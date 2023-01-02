@@ -35,7 +35,7 @@ router.get('/getByClassName/:classes', async (req, res) => {
     try {
 
         const data2 =  await Model.find({nameClasse: req.params.classes});        
-        res.json(data2._id)
+        res.json(data2[0]._id)
     }
     catch (error) {
         res.status(500).json({ message: error.message })
