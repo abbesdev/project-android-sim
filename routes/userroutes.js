@@ -43,7 +43,7 @@ module.exports = function(app) {
     "/api/test/getuser/:id",
     controller.findUser
   );
-  router.get('/api/test/getUserByClass/:classes', async (req, res) => {
+  app.get('/api/test/getUserByClass/:classes', async (req, res) => {
     try {
 
         const data2 =  await us.find({classes: req.params.classes});        
