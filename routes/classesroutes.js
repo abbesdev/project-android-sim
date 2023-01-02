@@ -30,6 +30,17 @@ router.get('/getAll', async (req, res) => {
         res.status(500).json({ message: error.message })
     }
 })
+//Get all Method
+router.get('/getByClassName/:classes', async (req, res) => {
+    try {
+
+        const data2 =  await Model.find({nameClasse: req.params.classes});        
+        res.json(data2._id)
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
 
 //Get by ID Method
 router.get('/getOne/:id',[verifyToken], async (req, res) => {
