@@ -43,6 +43,17 @@ router.get('/getOne/:id', async (req, res) => {
     }
 })
 
+router.get('/getBySubjectName/:subjects', async (req, res) => {
+    try {
+
+        const data2 =  await Model.find({nameSubject: req.params.subjects});        
+        res.json({subjects : data2[0]._id})
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
+
 //Update by ID Method
 router.patch('/update/:id',[verifyToken], async (req, res) => {
     try {
