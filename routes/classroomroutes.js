@@ -5,10 +5,7 @@ const router = express.Router();
 
 //Post Method
 router.post('/post', async (req, res) => {
-    const data = new Model({
-        classroomTitle: req.body.classroomTitle
-      
-    })
+    const data = new Model()
 
     try {
         const dataToSave = await data.save();
