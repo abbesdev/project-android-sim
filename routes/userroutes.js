@@ -116,15 +116,15 @@ app.patch(
   }}
 );
 app.patch(
-  "/updatebyidd",async (req, res) => {
-  const _id = req.body._id;
+  "/updatebyidd/:_id",async (req, res) => {
+  const _id = req.params._id;
  
   let roles = req.body.roles
 
   try {
     // This part was changed *****
 
-    await us.findByIdAndUpdate(_id,{roles: [roles]})
+    await us.findByIdAndUpdate(_id,{roles: roles})
     res.json('roles changed')
 
     // *******
