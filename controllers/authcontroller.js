@@ -68,7 +68,7 @@ exports.signup = (req, res) => {
               },
             );
 /**************** */
-            res.send({ user});
+            res.send(user.id);
           });
         }
       );
@@ -86,7 +86,7 @@ exports.signup = (req, res) => {
             return;
           }
 
-          res.send({ user});
+          res.json(user.id);
         });
       });
     }
