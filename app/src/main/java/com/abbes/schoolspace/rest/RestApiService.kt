@@ -15,16 +15,16 @@ import java.security.AccessController.getContext
 class RestApiService {
 
 
-    fun addUser(userData: UserSignUpInfo, onResult: (UserSignUpInfo?) -> Unit){
+    fun addUser(userData: SignUpWithRole, onResult: (SignUpWithRole?) -> Unit){
         val retrofit = ServiceBuilder.buildService(RestApi::class.java)
         retrofit.addUser(userData).enqueue(
 
-        object :Callback<UserSignUpInfo> {
-           override fun onFailure(call: Call<UserSignUpInfo>, t:Throwable){
+        object :Callback<SignUpWithRole> {
+           override fun onFailure(call: Call<SignUpWithRole>, t:Throwable){
                onResult(null)
            }
 
-            override fun onResponse(call: Call<UserSignUpInfo>, response: Response<UserSignUpInfo>) {
+            override fun onResponse(call: Call<SignUpWithRole>, response: Response<SignUpWithRole>) {
                 val addedUser = response.body()
                 if(response.isSuccessful){
                     val s :String

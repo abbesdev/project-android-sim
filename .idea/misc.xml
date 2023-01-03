@@ -22,6 +22,7 @@
         <entry key="app/src/main/res/layout/activity_student_main_screen.xml" value="0.12259371833839919" />
         <entry key="app/src/main/res/layout/activity_student_screen.xml" value="0.20438540535011795" />
         <entry key="app/src/main/res/layout/activity_teacher_main_screen.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/activity_waiting_screen.xml" value="0.22978527838215157" />
         <entry key="app/src/main/res/layout/course_item.xml" value="0.2793441772460938" />
         <entry key="app/src/main/res/layout/exam_item.xml" value="0.46900112870810684" />
         <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.26343846963652484" />

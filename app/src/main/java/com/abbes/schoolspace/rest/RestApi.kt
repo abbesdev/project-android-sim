@@ -9,13 +9,15 @@ interface RestApi {
 
 
     @POST("api/auth/signup")
-    fun addUser(@Body userData: UserSignUpInfo): Call<UserSignUpInfo>
+    fun addUser(@Body userData: SignUpWithRole): Call<SignUpWithRole>
 
 
 
     @POST("api/auth/signin/")
     fun signUser(@Body userData: UserSignIn): Call<UserSignInResponse>
 
+    @PATCH("/updatebyidd/{_id}")
+    fun updateUserRole(@Path("_id") _id: String): Call<RoleBodyRequestSignup>
 
 
     @GET("subject/getAll")

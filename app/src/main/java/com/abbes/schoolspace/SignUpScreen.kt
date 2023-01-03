@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.abbes.schoolspace.models.UserInfo
 import com.abbes.schoolspace.models.UserSignUpInfo
 import com.abbes.schoolspace.rest.RestApiService
+import com.abbes.schoolspace.teacherScreens.TeacherMainScreen
 import retrofit2.Response
 import java.io.IOException
 
@@ -22,30 +23,22 @@ class SignUpScreen: AppCompatActivity() {
 var buttonN = findViewById<Button>(R.id.button)
         buttonSignup.setOnClickListener {
 
-
+            val intent = Intent(this, SignInScreen::class.java)
+            startActivity(intent)
 
         }
         buttonN.setOnClickListener({
 val fullN = findViewById<EditText>(R.id.testf)
             val email = findViewById<EditText>(R.id.teste)
             val pass = findViewById<EditText>(R.id.testp)
-            val apiService = RestApiService()
-            val userInfo = UserSignUpInfo(fullName = fullN.text.toString(),
-            email = email.text.toString(),
-            password = pass.text.toString(),
-            confirmed = false)
 
-            apiService.addUser(userInfo){
-
-                if(it?.fullName !=null){
-
-
-                }else{
-                    print("not created check code man!!")
-                }
                 var intent = Intent(applicationContext, NextStepScreen::class.java)
-                startActivity(intent)
-            }
+            intent.putExtra("fn", fullN.text.toString())
+            intent.putExtra("mail", email.text.toString())
+            intent.putExtra("pwd", pass.text.toString())
+
+            startActivity(intent)
+
 
         })
 

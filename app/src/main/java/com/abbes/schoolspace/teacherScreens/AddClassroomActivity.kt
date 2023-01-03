@@ -163,7 +163,7 @@ class AddClassroomActivity : AppCompatActivity() {
 
                                 if(response.isSuccessful){
 
-for(i in 0..(response.body()?.size ?: 10))
+
 
                                     List4 = arrayListOf(response.body()!![0].id)
 

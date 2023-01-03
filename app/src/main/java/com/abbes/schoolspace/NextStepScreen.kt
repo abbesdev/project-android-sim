@@ -7,6 +7,10 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.abbes.schoolspace.ParentScreens.MainScreen
+import com.abbes.schoolspace.models.RoleBodyRequestSignup
+import com.abbes.schoolspace.models.SignUpWithRole
+import com.abbes.schoolspace.models.UserSignUpInfo
+import com.abbes.schoolspace.rest.RestApiService
 
 class NextStepScreen: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,9 +42,29 @@ class NextStepScreen: AppCompatActivity() {
             // Apply the adapter to the spinner
             spinner2.adapter = adapter
         }
+
         buttonSignup.setOnClickListener({
-            var intent = Intent(applicationContext, MainScreen::class.java)
-            startActivity(intent)
+
+
+            val apiService = RestApiService()
+            val userInfo = SignUpWithRole(
+                fullname = intent.getStringExtra("fn").toString(),
+                email =  intent.getStringExtra("mail").toString(),
+                password =  intent.getStringExtra("pwd").toString(),
+                roles = arrayListOf(spinner.selectedItem.toString()),
+
+                )
+
+            apiService.addUser(userInfo){
+
+if (it != null) {
+    var intent = Intent(applicationContext, WaitingScreen::class.java)
+    startActivity(intent)
+
+}
+
+            }
+
         })
     }
 

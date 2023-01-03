@@ -7,9 +7,9 @@
     <string name="email_addre">Email Address</string>
     <string name="spinnertext">Select your role in the app</string>
     <string-array name="languages">
-        <item>Student</item>
-        <item>Teacher</item>
-        <item>Parent</item>
+        <item>student</item>
+        <item>teacher</item>
+        <item>parent</item>
 
     </string-array>
     <string-array name="childs">
