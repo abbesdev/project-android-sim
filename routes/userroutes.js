@@ -46,7 +46,7 @@ module.exports = function(app) {
   app.get('/api/test/getUserByClass/:classes', async (req, res) => {
     try {
 
-        const data2 =  await us.find({classes: req.params.classes});        
+        const data2 =  await us.find({classes: [req.params.classes]});        
         res.json({data2})
     }
     catch (error) {
