@@ -25,7 +25,7 @@ class AddClassroomActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_classroom)
-        val title = findViewById<TextView>(R.id.textView15)
+        val title = findViewById<EditText>(R.id.editTextTextPersonName)
          lateinit var classText : String
         lateinit var subjectText : String
 

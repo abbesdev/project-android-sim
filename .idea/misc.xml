@@ -53,6 +53,7 @@
         <entry key="app/src/main/res/layout/splash_screen.xml" value="0.1" />
         <entry key="app/src/main/res/menu/adminmenu.xml" value="0.37025641025641026" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
   </component>
