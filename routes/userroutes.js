@@ -47,7 +47,7 @@ module.exports = function(app) {
     try {
 
         const data2 =  await us.find({classes: [req.params.classes]});        
-        res.json({data2})
+        res.json(data2[0]._id)
     }
     catch (error) {
         res.status(500).json({ message: error.message })
