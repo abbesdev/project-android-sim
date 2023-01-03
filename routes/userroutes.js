@@ -3,6 +3,7 @@ const controller = require("../controllers/usercontroller");
 const authcontroller = require("../controllers/authcontroller");
 const { models } = require("mongoose");
 const us = require("../models/user");
+const { ROLES } = require("../models");
 
 
 module.exports = function(app) {
@@ -114,7 +115,23 @@ app.patch(
     console.log(error.message)
   }}
 );
+app.patch(
+  "/updatebyidd",async (req, res) => {
+  const _id = req.body._id;
+ 
+  let roles = req.body.roles
 
+  try {
+    // This part was changed *****
+
+    await us.findByIdAndUpdate(_id,{roles: [roles]})
+    res.json('roles changed')
+
+    // *******
+  } catch (error) {
+    console.log(error.message)
+  }}
+);
 
 
    //delete user by id
