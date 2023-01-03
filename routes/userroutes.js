@@ -140,6 +140,16 @@ app.patch(
     controller.deleteUser
   );
 
+  //get all timetables by parent id
+  app.get(
+    "/api/test/gettimetable/:id",
+    controller.getTimetables
+  );
+  app.get(
+    "/api/test/gettimetablestudent/:id",
+    controller.getTimetablestudent
+  );
+
   /*
   app.get(
     "/confirmation/:token",async (req, res) => {

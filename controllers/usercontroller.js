@@ -1,3 +1,4 @@
+const TimeTable = require("../models/timetable");
 const User = require("../models/user");
 
 
@@ -116,5 +117,36 @@ exports.confirmation = async (req, res) => {
   }
 };
 
+  //get all timetables by parent id
+  exports.getTimetables = async (req, res) => {
+    try{
+    const user = await User.findById(req.params.id);
+    console.log(user.childrens[0]);
+    const user2 = await User.find(user.childrens[0]);
+    console.log(user2);
+    const timetables = await TimeTable.find({classes : user2[0].classes});
+
+
+    res.status(200).send(timetables);
+    } catch(e) {
+      res.status(404).send({error : "User not found"});
+      res.status(400).send({error : e});
+    }
+  };
+   //get all timetables by parent 
+   exports.getTimetablestudent = async (req, res) => {
+    try{
+    const student = await User.findById(req.params.id);
+    //console.log(user.childrens[0]);
+  
+    const timetables = await TimeTable.find({classes : student.classes});
+
+
+    res.status(200).send(timetables);
+    } catch(e) {
+      res.status(404).send({error : "User not found"});
+      res.status(400).send({error : e});
+    }
+  };
 
 //exports.
