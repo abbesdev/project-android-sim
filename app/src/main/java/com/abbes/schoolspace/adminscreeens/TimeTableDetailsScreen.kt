@@ -1,6 +1,7 @@
 package com.abbes.schoolspace.adminscreeens
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.abbes.schoolspace.R
+import com.abbes.schoolspace.SignInScreen
 import com.abbes.schoolspace.fragments.BottomSheetFragment
 import com.abbes.schoolspace.models.Classe
 import com.abbes.schoolspace.models.ClasseItem
@@ -44,7 +46,13 @@ class TimeTableDetailsScreen : AppCompatActivity(), DatePickerDialog.OnDateSetLi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_time_table_details_screen)
+        val drawerLayout1 : DrawerLayout = findViewById(R.id.drawerLayout)
 
+        val toggButton = findViewById<ImageButton>(R.id.imageButton3)
+
+        toggButton.setOnClickListener({
+            drawerLayout1.open()
+        })
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
         val navView : NavigationView = findViewById(R.id.nav_view)
         var dayView: CalendarDayView = findViewById(R.id.dayView)
@@ -74,6 +82,14 @@ class TimeTableDetailsScreen : AppCompatActivity(), DatePickerDialog.OnDateSetLi
                 R.id.students -> startActivity(intent2)
                 R.id.parents -> startActivity(intent3)
                 R.id.timetables -> startActivity(intent4)
+                R.id.paiements -> {
+                    val preferences = getSharedPreferences("Login", Context.MODE_PRIVATE)
+                    if (preferences != null) {
+                        preferences.edit().clear().commit()
+                        val intent = Intent (this, SignInScreen::class.java)
+                        startActivity(intent)
+                    }
+                }
             }
             true
         }
@@ -108,7 +124,7 @@ class TimeTableDetailsScreen : AppCompatActivity(), DatePickerDialog.OnDateSetLi
         /********************  Get Classes list ***********************************************/
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://192.168.1.22:8080/")
+            .baseUrl("https://project-android-sim.vercel.app/")
             .build()
             .create(RestApi::class.java)
         val retrofitData = retrofitBuilder.getAllClasses()
@@ -187,7 +203,7 @@ class TimeTableDetailsScreen : AppCompatActivity(), DatePickerDialog.OnDateSetLi
                 Log.e("first",dateprov +" --- "+selectedItem)
                 val retrofitBuilder = Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl("http://192.168.1.22:8080/")
+                    .baseUrl("https://project-android-sim.vercel.app/")
                     .build()
                     .create(RestApi::class.java)
                 val retrofitData = retrofitBuilder.getClasses(selectedItem,dateprov)

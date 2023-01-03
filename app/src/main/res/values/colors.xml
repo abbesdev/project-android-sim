@@ -22,4 +22,7 @@
     <color name="gray_200">#eaeaea</color>
     <color name="white_A700">#ffffff</color>
     <color name="gray_300">#e2e2e2</color>
+    <color name="red">#EB3F3A</color>
+    <color name="green">#47CD4D</color>
+    <color name="orange">#E18C10</color>
 </resources>

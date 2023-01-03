@@ -3,6 +3,7 @@ package com.abbes.schoolspace.fragments
 import android.R
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -12,13 +13,13 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
+import com.abbes.schoolspace.adminscreeens.TimeTableDetailsScreen
 import com.abbes.schoolspace.models.Classe
 import com.abbes.schoolspace.models.ClasseItem
 import com.abbes.schoolspace.models.Matiere
 import com.abbes.schoolspace.models.MatiereInfo
 import com.abbes.schoolspace.rest.RestApi
 import com.deishelon.roundedbottomsheet.RoundedBottomSheetDialogFragment
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -303,7 +304,7 @@ class BottomSheetFragment : RoundedBottomSheetDialogFragment() , TimePickerDialo
         /********************  Get Classes list ***********************************************/
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://192.168.1.22:8080/")
+            .baseUrl("https://project-android-sim.vercel.app/")
             .build()
             .create(RestApi::class.java)
         val retrofitData = retrofitBuilder.getAllClasses()
@@ -395,7 +396,7 @@ if(selectedItem == "Select a class")
 
         val retrofitBuilder2 = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://192.168.1.22:8080/")
+            .baseUrl("https://project-android-sim.vercel.app/")
             .build()
             .create(RestApi::class.java)
         val retrofitData2 = retrofitBuilder2.getAllClasses()
@@ -422,19 +423,26 @@ if(selectedItem == "Select a class")
                            )
                            val retrofitBuilder = Retrofit.Builder()
                                .addConverterFactory(GsonConverterFactory.create())
-                               .baseUrl("http://192.168.1.22:8080/")
+                               .baseUrl("https://project-android-sim.vercel.app/")
                                .build()
                                .create(RestApi::class.java)
                            val retrofitData = retrofitBuilder.createTimetable(classes2)
                            if (retrofitData != null) {
                                retrofitData.enqueue(object : Callback<Matiere?> {
+
                                    override fun onResponse(call: Call<Matiere?>, response: Response<Matiere?>) {
+                                       Toast.makeText(context, response.code().toString(), Toast.LENGTH_LONG).show()
 
                                        Log.e("post onresponse",response.code().toString())
+
                                    }
 
                                    override fun onFailure(call: Call<Matiere?>, t: Throwable) {
-
+                                       Toast.makeText(context, response.code().toString(), Toast.LENGTH_LONG).show()
+                                       if(response.code() == 200){
+                                           val intent = Intent(requireContext(), TimeTableDetailsScreen::class.java)
+                                           startActivity(intent)
+                                       }
                                        Log.e("post onfailure",t.toString())
 
                                    }

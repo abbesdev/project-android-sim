@@ -1,14 +1,17 @@
 package com.abbes.schoolspace.adminscreeens
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.abbes.schoolspace.R
+import com.abbes.schoolspace.SignInScreen
 import com.abbes.schoolspace.rest.RestApi
 import com.google.android.material.navigation.NavigationView
 import retrofit2.Call
@@ -59,7 +62,11 @@ class AdminScreen : AppCompatActivity() {
 
         var intent3 = Intent(applicationContext, ParentList::class.java)
         var intent4 = Intent(applicationContext, TimeTableScreen::class.java)
+val toggButton = findViewById<ImageButton>(R.id.imageButton3)
 
+        toggButton.setOnClickListener({
+drawerLayout.open()
+        })
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         navView.setNavigationItemSelectedListener {
@@ -68,6 +75,14 @@ class AdminScreen : AppCompatActivity() {
                 R.id.students -> startActivity(intent2)
                 R.id.parents -> startActivity(intent3)
                 R.id.timetables -> startActivity(intent4)
+                R.id.paiements -> {
+                    val preferences = getSharedPreferences("Login", Context.MODE_PRIVATE)
+                    if (preferences != null) {
+                        preferences.edit().clear().commit()
+                        val intent = Intent (this, SignInScreen::class.java)
+                        startActivity(intent)
+                    }
+                }
 
             }
             true
@@ -75,7 +90,7 @@ class AdminScreen : AppCompatActivity() {
 
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://192.168.1.22:8080/api/test/")
+            .baseUrl("https://project-android-sim.vercel.app/api/test/")
             .build()
             .create(RestApi::class.java)
         val retrofitData = retrofitBuilder.countUsers()

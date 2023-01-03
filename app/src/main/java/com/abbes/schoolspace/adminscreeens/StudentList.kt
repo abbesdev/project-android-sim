@@ -1,15 +1,18 @@
 package com.abbes.schoolspace.adminscreeens
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.ImageButton
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.abbes.schoolspace.R
+import com.abbes.schoolspace.SignInScreen
 
 import com.abbes.schoolspace.adapters.RecycleAdapter.ViewPagerAdapter
 import com.abbes.schoolspace.fragments.notverified
@@ -44,7 +47,13 @@ class StudentList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_list)
+        val drawerLayout1 : DrawerLayout = findViewById(R.id.drawerLayout)
 
+        val toggButton = findViewById<ImageButton>(R.id.imageButton3)
+
+        toggButton.setOnClickListener({
+            drawerLayout1.open()
+        })
         fullname = arrayOf("Beyram ayadi","Mohammed Abbes")
         email =  arrayOf("beyram.ayadi@esprit.tn","mohammed.abbes@esprit.tn")
         password =  arrayOf("beyram.ayadi@esprit.tn","mohammed.abbes@esprit.tn")
@@ -85,6 +94,14 @@ class StudentList : AppCompatActivity() {
                 R.id.students -> startActivity(intent2)
                 R.id.parents -> startActivity(intent3)
                 R.id.timetables -> startActivity(intent4)
+                R.id.paiements -> {
+                    val preferences = getSharedPreferences("Login", Context.MODE_PRIVATE)
+                    if (preferences != null) {
+                        preferences.edit().clear().commit()
+                        val intent = Intent (this, SignInScreen::class.java)
+                        startActivity(intent)
+                    }
+                }
             }
             true
         }

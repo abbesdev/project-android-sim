@@ -1,19 +1,15 @@
 package com.abbes.schoolspace.rest
 
-import com.abbes.schoolspace.models.Subject
+import com.abbes.schoolspace.models.*
 import retrofit2.Call
-import com.abbes.schoolspace.models.UserInfo
-import com.abbes.schoolspace.models.UserSignIn
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import okhttp3.ResponseBody
+import retrofit2.http.*
 
 interface RestApi {
 
 
     @POST("api/auth/signup")
-    fun addUser(@Body userData: UserInfo): Call<UserInfo>
+    fun addUser(@Body userData: UserSignUpInfo): Call<UserSignUpInfo>
 
 
 
@@ -25,10 +21,19 @@ interface RestApi {
     @GET("subject/getAll")
      fun getAllSubjects(): List<Subject>
 
-
+    @GET("subject/getAll")
+    fun getAllSubjectss(): Call<Subject>
 
    /* @GET("users/getAll")
     fun getAllUsers(): Call<UserInfo>*/
+   @GET("/classes/getByClassName/{className}")
+   fun getClassByName(@Path("className") className: String): Call<ClassroomResponseByClass>
+
+    @GET("/subject/getBySubjectName/{nameSubject}")
+    fun getSubjectByName(@Path("nameSubject") nameSubject: String): Call<SubjectByName>
+
+    @GET("/api/test/getUserByClass/{classes}")
+    fun getUsersByClass(@Path("classes") classes: String): Call<ResponseUsersByClassId>
 
 
     @GET("getallusers")
@@ -46,6 +51,9 @@ interface RestApi {
     @POST("timetable/post")
     fun createTimetable(@Body Matiere: MatiereInfo): Call<Matiere?>?
 
+    @POST("classroom/post")
+    fun createClassroom(@Body Classroom: ClassroomPost): Call<ClassroomPost>
+
     @PATCH("/api/test/confirmation/{id}")
     fun updateUser(@Path("id") id: String): Call<ResponseBody>
 
@@ -55,7 +63,7 @@ interface RestApi {
     @GET("/timetable/getOne/{classe}/{date}")
     fun getClasses(@Path("classe") classe : String,@Path("date") date :String): Call<Matiere>
 
-     fun getAllSubjects(): Call<Subject>
+
 
 
     @GET("classroom/getAll")
@@ -77,4 +85,7 @@ interface RestApi {
     @POST("grade/getByStudentAndSubject")
     fun getStudentGradesById(@Body gradeData : GradeVerifyPostRequest): Call<StudentWithGradeByIdModel>
 
+
+    @GET("/classroom/getByTeacherId/{id}")
+    fun getClassroomByTeacherId(@Path("id") id: String): Call<ClassroomResponse>
 }

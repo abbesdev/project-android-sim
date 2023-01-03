@@ -6,6 +6,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.abbes.schoolspace.ParentScreens.MainScreen
 import com.abbes.schoolspace.StudentScreens.StudentScreen
+import com.abbes.schoolspace.teacherScreens.TeacherMainScreen
 
 class OnboardingScreen  : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +30,13 @@ class OnboardingScreen  : AppCompatActivity(){
                 startActivity(intent)}
            else if (unmRole == "ROLE_STUDENT"){
                 var intent = Intent(applicationContext, StudentScreen::class.java)
-                startActivity(intent)}else { var intent = Intent(applicationContext, SignInScreen::class.java)
+                startActivity(intent)}
+            else if (unmRole == "ROLE_TEACHER"){
+                var intent = Intent(applicationContext, TeacherMainScreen::class.java)
+                startActivity(intent)}
+            
+
+            else { var intent = Intent(applicationContext, SignInScreen::class.java)
                 startActivity(intent)}
         })
 

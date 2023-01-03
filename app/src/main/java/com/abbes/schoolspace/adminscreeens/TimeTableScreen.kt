@@ -1,11 +1,13 @@
 package com.abbes.schoolspace.adminscreeens
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.DatePicker
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -15,6 +17,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.abbes.schoolspace.R
+import com.abbes.schoolspace.SignInScreen
 import com.abbes.schoolspace.adapters.ClasseAdapter
 import com.abbes.schoolspace.models.*
 import com.abbes.schoolspace.rest.RestApi
@@ -69,6 +72,13 @@ class TimeTableScreen : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_time_table_screen)
+        val drawerLayout1 : DrawerLayout = findViewById(R.id.drawerLayout)
+
+        val toggButton = findViewById<ImageButton>(R.id.imageButton3)
+
+        toggButton.setOnClickListener({
+            drawerLayout1.open()
+        })
         val textView = findViewById<TextView>(R.id.see_details)
         val calendarView = findViewById<MaterialCalendarView>(R.id.calendarView)
        // val calendarView2 = findViewById<CalendarView>(R.id.calendarView)
@@ -83,7 +93,7 @@ class TimeTableScreen : AppCompatActivity() {
 
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://192.168.1.22:8080/")
+            .baseUrl("https://project-android-sim.vercel.app/")
             .build()
             .create(RestApi::class.java)
         val retrofitData = retrofitBuilder.getAllTimetables()
@@ -184,7 +194,7 @@ class TimeTableScreen : AppCompatActivity() {
 
         val retrofitBuilder2 = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://192.168.1.22:8080/")
+            .baseUrl("https://project-android-sim.vercel.app/")
             .build()
             .create(RestApi::class.java)
         val retrofitData2 = retrofitBuilder2.getAllClasses()
@@ -440,6 +450,14 @@ class TimeTableScreen : AppCompatActivity() {
                 R.id.students -> startActivity(intent2)
                 R.id.parents -> startActivity(intent3)
                 R.id.timetables -> startActivity(intent4)
+                R.id.paiements -> {
+                    val preferences = getSharedPreferences("Login", Context.MODE_PRIVATE)
+                    if (preferences != null) {
+                        preferences.edit().clear().commit()
+                        val intent = Intent (this, SignInScreen::class.java)
+                        startActivity(intent)
+                    }
+                }
             }
             true
         }
@@ -483,7 +501,7 @@ class TimeTableScreen : AppCompatActivity() {
 
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://192.168.1.22:8080/")
+            .baseUrl("https://project-android-sim.vercel.app/")
             .build()
             .create(RestApi::class.java)
         val retrofitData = retrofitBuilder.getAllClasses()
@@ -539,7 +557,7 @@ return ListClasses
 
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://192.168.1.22:8080/")
+            .baseUrl("https://project-android-sim.vercel.app/")
             .build()
             .create(RestApi::class.java)
         val retrofitData = retrofitBuilder.getAllTimetables()
@@ -578,7 +596,7 @@ return ListClasses
 
                         val retrofitBuilder3 = Retrofit.Builder()
                             .addConverterFactory(GsonConverterFactory.create())
-                            .baseUrl("http://192.168.1.22:8080/")
+                            .baseUrl("https://project-android-sim.vercel.app/")
                             .build()
                             .create(RestApi::class.java)
                         val retrofitData3 = retrofitBuilder3.getAllClasses()

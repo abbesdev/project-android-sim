@@ -31,8 +31,7 @@
         />
     <item
         android:id="@+id/paiements"
-        android:icon="@drawable/ic_baseline_attach_money_24"
-        android:title="School Paiements"
-        />
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
+        android:title="disconnect" />
 
 </menu>

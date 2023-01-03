@@ -7,12 +7,13 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.abbes.schoolspace.models.UserInfo
+import com.abbes.schoolspace.models.UserSignUpInfo
 import com.abbes.schoolspace.rest.RestApiService
 import retrofit2.Response
 import java.io.IOException
 
 class SignUpScreen: AppCompatActivity() {
-/*
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +30,7 @@ val fullN = findViewById<EditText>(R.id.testf)
             val email = findViewById<EditText>(R.id.teste)
             val pass = findViewById<EditText>(R.id.testp)
             val apiService = RestApiService()
-            val userInfo = UserInfo(fullName = fullN.text.toString(),
+            val userInfo = UserSignUpInfo(fullName = fullN.text.toString(),
             email = email.text.toString(),
             password = pass.text.toString(),
             confirmed = false)
@@ -51,5 +52,5 @@ val fullN = findViewById<EditText>(R.id.testf)
     }
 
 
-*/
+
 }

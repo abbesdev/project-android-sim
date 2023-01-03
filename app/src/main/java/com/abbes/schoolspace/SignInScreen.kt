@@ -2,14 +2,17 @@ package com.abbes.schoolspace
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.abbes.schoolspace.ParentScreens.MainScreen
 import com.abbes.schoolspace.StudentScreens.StudentScreen
+import com.abbes.schoolspace.adminscreeens.AdminScreen
 import com.abbes.schoolspace.models.UserSignIn
 import com.abbes.schoolspace.models.UserSignInResponse
 import com.abbes.schoolspace.rest.RestApi
 import com.abbes.schoolspace.rest.ServiceBuilder
+import com.abbes.schoolspace.teacherScreens.TeacherMainScreen
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,6 +29,8 @@ class SignInScreen  : AppCompatActivity() {
             email = email.text.toString(),
             password = pass.text.toString()
         )
+        Log.e("testing cr adding",userInfo.toString())
+
 
         val retrofit = ServiceBuilder.buildService(RestApi::class.java)
         retrofit.signUser(userInfo).enqueue(
@@ -67,6 +72,38 @@ class SignInScreen  : AppCompatActivity() {
                                 var intent1 = Intent(applicationContext, StudentScreen::class.java)
                                 if (addedUser != null && remmeberme.isChecked) {
                                    intent.putExtra("fullname",addedUser.fullname.toString())
+                                    val sp = getSharedPreferences("Login", MODE_PRIVATE)
+                                    val Ed = sp.edit()
+                                    Ed.putString("Unm", addedUser.fullname)
+                                    Ed.putString("roletype",addedUser.roles.first().toString())
+                                    Ed.putString("test",addedUser.roles.first().toString().lowercase())
+
+                                    Ed.putString("userid",addedUser.id)
+                                    Ed.putString("Unm1", addedUser.email)
+
+                                    Ed.commit()
+                                }
+                                startActivity(intent1)
+                            }else  if(addedUser.roles.contains("ROLE_ADMIN")){
+                                var intent1 = Intent(applicationContext, AdminScreen::class.java)
+                                if (addedUser != null && remmeberme.isChecked) {
+                                    intent.putExtra("fullname",addedUser.fullname.toString())
+                                    val sp = getSharedPreferences("Login", MODE_PRIVATE)
+                                    val Ed = sp.edit()
+                                    Ed.putString("Unm", addedUser.fullname)
+                                    Ed.putString("roletype",addedUser.roles.first().toString())
+                                    Ed.putString("test",addedUser.roles.first().toString().lowercase())
+
+                                    Ed.putString("userid",addedUser.id)
+                                    Ed.putString("Unm1", addedUser.email)
+
+                                    Ed.commit()
+                                }
+                                startActivity(intent1)
+                            }else  if(addedUser.roles.contains("ROLE_TEACHER")){
+                                var intent1 = Intent(applicationContext, TeacherMainScreen::class.java)
+                                if (addedUser != null && remmeberme.isChecked) {
+                                    intent.putExtra("fullname",addedUser.fullname.toString())
                                     val sp = getSharedPreferences("Login", MODE_PRIVATE)
                                     val Ed = sp.edit()
                                     Ed.putString("Unm", addedUser.fullname)

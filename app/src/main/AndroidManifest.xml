@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.abbes.schoolspace" >
+    package="com.abbes.schoolspace">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,17 +12,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Schoolspace"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".teacherScreens.ClassroomDetailsTeacher"
+            android:exported="false" />
+        <activity
+            android:name=".teacherScreens.AddClassroomActivity"
+            android:exported="false" />
+        <activity
+            android:name=".teacherScreens.TeacherMainScreen"
+            android:exported="false" />
         <activity
             android:name=".StudentScreens.StudentScreen"
             android:exported="false" />
-
         <activity
             android:name=".EditInfoActivity"
             android:exported="false"
             android:label="@string/title_activity_settings" />
-        android:theme="@style/Theme.Schoolspace"
-        android:usesCleartextTraffic="true">
         <activity
             android:name=".adminscreeens.TimeTableDetailsScreen"
             android:exported="false" />
@@ -47,7 +53,7 @@
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

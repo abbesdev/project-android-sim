@@ -11,7 +11,6 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.abbes.schoolspace.R
 import com.abbes.schoolspace.models.MatiereInfo
-import org.threeten.bp.ZonedDateTime.ofInstant
 import java.time.LocalDate
 import java.time.LocalDateTime.ofInstant
 import java.time.LocalTime

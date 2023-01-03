@@ -62,7 +62,7 @@ class StudentAdapter(private val userList : ArrayList<UserInfo>): RecyclerView.A
 
             val retrofitBuilder3 = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("http://192.168.1.22:8080/")
+                .baseUrl("https://project-android-sim.vercel.app/")
                 .build()
                 .create(RestApi::class.java)
             val retrofitData3 = retrofitBuilder3.updateUser(currentItem._id)

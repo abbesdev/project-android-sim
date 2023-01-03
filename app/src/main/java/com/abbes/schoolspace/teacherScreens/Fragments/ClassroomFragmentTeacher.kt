@@ -1,34 +1,32 @@
-package com.abbes.schoolspace.ParentScreens
+package com.abbes.schoolspace.teacherScreens.Fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Build
+import android.content.Intent
 import android.os.Bundle
-import android.os.StrictMode
-import android.os.StrictMode.ThreadPolicy
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.abbes.schoolspace.ParentScreens.DetailActivity
 import com.abbes.schoolspace.R
-import com.abbes.schoolspace.adapters.CourseAdapter
 import com.abbes.schoolspace.adapters.CustomAdapter
+import com.abbes.schoolspace.adapters.CustomAdapterClassroomTeacher
 import com.abbes.schoolspace.models.ClassroomResponse
 import com.abbes.schoolspace.models.ClassroomResponseItem
-import com.abbes.schoolspace.models.Subject
-import com.abbes.schoolspace.models.SubjectItem
+import com.abbes.schoolspace.models.ImageModel
+import com.abbes.schoolspace.models.UserByIdModel
 import com.abbes.schoolspace.rest.RestApi
 import com.abbes.schoolspace.rest.ServiceBuilder
+import com.abbes.schoolspace.teacherScreens.AddClassroomActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,11 +35,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
+ * Use the [ClassroomFragmentTeacher.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment : Fragment() {
-
+class ClassroomFragmentTeacher : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -57,96 +54,69 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-
     ): View? {
-
-
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
-
-
+        return inflater.inflate(R.layout.fragment_classroom_teacher, container, false)
     }
-
 
     private var lv: ListView? = null
-    private var customeAdapter: CustomAdapter? = null
-    var listVertical: ArrayList<ClassroomResponseItem> = arrayListOf()
 
-     var list: ArrayList<SubjectItem> = arrayListOf()
-    val adapter = CourseAdapter(list, context)
-   val layoutManager = LinearLayoutManager(context)
+    private var customeAdapter: CustomAdapterClassroomTeacher? = null
+    private var imageModelArrayList: ArrayList<ImageModel>? = null
+    private val myImageList = intArrayOf(
+        R.drawable.high_school_physics_120415_large,
+        R.drawable.high_school_physics_120415_large,
+        R.drawable.high_school_physics_120415_large,
+        R.drawable.high_school_physics_120415_large,
+        R.drawable.high_school_physics_120415_large,
+        R.drawable.high_school_physics_120415_large,
+        R.drawable.high_school_physics_120415_large,
+        R.drawable.high_school_physics_120415_large
+    )
+    lateinit var customArrayAdapters: CustomAdapter
+
+
+    var list: ArrayList<ClassroomResponseItem> = arrayListOf()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        super.onCreate(savedInstanceState)
+val btnAdd = view.findViewById(R.id.classroomaddbtn) as Button
 
-        if (Build.VERSION.SDK_INT > 9) {
-            val policy = ThreadPolicy.Builder().permitAll().build()
-            StrictMode.setThreadPolicy(policy)
-        }
-        val preferences = this.activity?.getSharedPreferences("Login", Context.MODE_PRIVATE)
+        btnAdd.setOnClickListener({
+            val intent = Intent(context, AddClassroomActivity::class.java)
+            startActivity(intent)
+        })
 
-        val unm = preferences?.getString("Unm", "not added yet")
-        val fn = requireActivity().intent.getStringExtra("fullname") // OR Double quotes
 
-val textFn : (TextView) = view.findViewById(R.id.textView6)
-textFn.setText(unm)
+        lv = view.findViewById(R.id.userlist) as ListView
 
-        list = ArrayList()
 
-        val recyclerView = requireView().findViewById<RecyclerView>(R.id.recycleView)
-        val retrofit:Retrofit= Retrofit.Builder()
+        val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("https://project-android-sim.vercel.app/")
             .addConverterFactory(GsonConverterFactory.create()).build()
+        val preferences = this.activity?.getSharedPreferences("Login", Context.MODE_PRIVATE)
 
-        val api:RestApi=ServiceBuilder.buildService(RestApi::class.java)
-val call:Call<Subject> = api.getAllSubjectss()
+        val unmId = preferences?.getString("userid", "not added yet")
+        val api: RestApi = ServiceBuilder.buildService(RestApi::class.java)
+        val call: Call<ClassroomResponse> = api.getClassroomByTeacherId(unmId.toString())
 
-call.enqueue(object : Callback<Subject?>{
-    @SuppressLint("NotifyDataSetChanged")
-    override fun onResponse(call: Call<Subject?>, response: retrofit2.Response<Subject?>) {
-       if(response.isSuccessful){
-           list.clear()
-           for(myData in response.body()!!) {
-               list.add(myData)
-           }
-           recyclerView.layoutManager = layoutManager
-           adapter.notifyDataSetChanged()
-           recyclerView.layoutManager =
-               LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-           recyclerView.adapter= CourseAdapter(list,context)
-       }
-    }
-
-    override fun onFailure(call: Call<Subject?>, t: Throwable) {
-      Toast.makeText(context, "error hereeee:::",Toast.LENGTH_LONG).show()
-    }
-
-})
-
-
-
-
-        lv = view.findViewById(R.id.userlistt) as ListView
-
-        val call2: Call<ClassroomResponse> = api.getAllClassrooms()
-
-        call2.enqueue(
+        call.enqueue(
             object : Callback<ClassroomResponse?> {
+
 
                 override fun onResponse(
                     call: Call<ClassroomResponse?>,
                     response: retrofit2.Response<ClassroomResponse?>
                 ) {
-                    Toast.makeText(context, response.code().toString(), Toast.LENGTH_LONG).show()
+
 
                     if (response.isSuccessful) {
-                        listVertical.clear()
+                        list.clear()
                         for (myData in response.body()!!) {
-                            listVertical.add(myData)
+                            list.add(myData)
                         }
 
 
-                        customeAdapter = CustomAdapter(requireContext(), listVertical!!)
+                        customeAdapter = CustomAdapterClassroomTeacher(requireContext(), list!!)
                         lv!!.adapter = customeAdapter
 
                     }
@@ -158,9 +128,20 @@ call.enqueue(object : Callback<Subject?>{
 
             })
 
+        val unm = preferences?.getString("Unm3", "not added yet")
+        val unm2 = preferences?.getString("Unm", "not added yet")
+
+        val textFn : (TextView) = view.findViewById(R.id.textView6)
+        textFn.setText(unm2)
 
 
-}
+
+
+
+
+
+    }
+
 
 
 
@@ -171,12 +152,12 @@ call.enqueue(object : Callback<Subject?>{
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
+         * @return A new instance of fragment ClassroomFragmentTeacher.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
+            ClassroomFragmentTeacher().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
