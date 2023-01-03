@@ -150,6 +150,12 @@ app.patch(
     controller.getTimetablestudent
   );
 
+
+  app.get(
+    "/api/test/gettimetableteacher/:id",
+    controller.getTimetableteacher
+  );
+
   /*
   app.get(
     "/confirmation/:token",async (req, res) => {

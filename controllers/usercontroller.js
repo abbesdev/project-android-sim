@@ -1,3 +1,4 @@
+const Classroom = require("../models/classroom");
 const TimeTable = require("../models/timetable");
 const User = require("../models/user");
 
@@ -45,7 +46,7 @@ exports.countUsers = async (req, res) => {
     users[1] = teachers;
     const students = await User.countDocuments({roles : "63862832351815a82140b1c2"});
     users[2] = students;
-    const parents = await User.countDocuments({roles : "638628bb762241552fd5b1a4"});
+    const parents = await User.countDocuments({roles : "63862832351815a82140b1c1"});
     users[3] = parents;
 
   res.status(200).json( users);}
@@ -74,7 +75,7 @@ exports.countTeachers = async (req, res) => {
 // count users number where role is parents
 exports.countParents = async (req, res) => {
   try{
-  const user = await User.countDocuments({roles : "638628bb762241552fd5b1a4"});
+  const user = await User.countDocuments({roles : "63862832351815a82140b1c1"});
   res.status(200).json( user);}
   catch{
     res.status(400).send({error : "User not found"});
@@ -149,4 +150,21 @@ exports.confirmation = async (req, res) => {
     }
   };
 
+  
+  exports.getTimetableteacher = async (req, res) => {
+    try{
+
+    const classrooms = await Classroom.find({teacher : req.params.id});
+    //console.log(user.childrens[0]);
+    const timetables = await TimeTable.find({classes : student.classes});
+  
+  //  const timetables = await TimeTable.find({classes : student.classes});
+
+
+    res.status(200).send(classrooms);
+    } catch(e) {
+      res.status(404).send({error : "User not found"});
+      res.status(400).send({error : e});
+    }
+  };
 //exports.
