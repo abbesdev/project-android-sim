@@ -43,11 +43,11 @@ module.exports = function(app) {
     "/api/test/getuser/:id",
     controller.findUser
   );
-  app.get('/api/test/getUserByClass/:users', async (req, res) => {
+  app.get('/api/test/getUserByClass/:classes', async (req, res) => {
     try {
 
-        const data2 =  await us.find({classes: req.params.users});        
-        res.json({users : data2[0]._id})
+        const data2 =  await us.find({classes: req.params.classes});        
+        res.json({data2})
     }
     catch (error) {
         res.status(500).json({ message: error.message })
