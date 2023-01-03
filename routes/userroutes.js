@@ -124,7 +124,7 @@ app.patch(
   try {
     // This part was changed *****
 
-    await us.findByIdAndUpdate(_id,{roles: roles})
+    await us.findByIdAndUpdate(_id,{roles: [roles]})
     res.json('roles changed')
 
     // *******
