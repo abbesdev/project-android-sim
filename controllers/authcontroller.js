@@ -68,7 +68,7 @@ exports.signup = (req, res) => {
               },
             );
 /**************** */
-            res.send({ message: "User was registered successfully!" });
+            res.send({ userid : _id});
           });
         }
       );
@@ -86,7 +86,7 @@ exports.signup = (req, res) => {
             return;
           }
 
-          res.send({ message: "User was registered successfully!" });
+          res.send({ userid : _id});
         });
       });
     }
