@@ -4,7 +4,7 @@ const Model = require('../models/subject.js');
 const router = express.Router();
 
 //Post Method
-router.post('/post',[verifyToken], async (req, res) => {
+router.post('/post', async (req, res) => {
     const data = new Model({
         nameSubject: req.body.nameSubject,
         imageSubject:req.body.imageSubject
