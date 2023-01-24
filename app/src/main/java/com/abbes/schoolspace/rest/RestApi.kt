@@ -90,4 +90,15 @@ interface RestApi {
 
     @GET("/classroom/getByTeacherId/{id}")
     fun getClassroomByTeacherId(@Path("id") id: String): Call<ClassroomResponse>
+
+
+
+    @GET("/api/test/gettimetable/{id}")
+    fun getTimetableByParentId(@Path("id") id: String): Call<Matiere>
+
+    @GET("/api/test/gettimetablestudent/{id}")
+    fun getTimetableByStudentId(@Path("id") id: String): Call<Matiere>
+
+
+
 }

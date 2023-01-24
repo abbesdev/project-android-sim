@@ -3,6 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/activity_add_classroom.xml" value="0.1265625" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/activity_admin_screen.xml" value="0.20208333333333334" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/activity_admin_screen2.xml" value="0.20208333333333334" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/activity_classroom_details_teacher.xml" value="0.3875" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/activity_detail.xml" value="0.3875" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/activity_detail_table.xml" value="0.3875" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/activity_detail_user.xml" value="0.3875" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/activity_edit_info.xml" value="0.3875" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/activity_parent_list.xml" value="0.3875" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/activity_student_screen.xml" value="0.1265625" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/activity_teacher_main_screen.xml" value="0.20208333333333334" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/activity_time_table_details_screen.xml" value="0.264" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/activity_time_table_screen.xml" value="0.3875" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/content_student_list.xml" value="0.20208333333333334" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/course_item.xml" value="0.20208333333333334" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/fragment_calendar.xml" value="0.3875" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/fragment_calendar_student.xml" value="0.26721014492753625" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/fragment_calendar_teacher.xml" value="0.1265625" />
+        <entry key="..\:/Users/MSI/Desktop/4eme SIM/projet android final/project-android-sim/app/src/main/res/layout/fragment_report_student.xml" value="0.1265625" />
         <entry key="app/src/debug/res/drawable/rectangle_bg_gray_200_14_border_gray_200_radius_10.xml" value="0.127" />
         <entry key="app/src/debug/res/font/sen.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/gradient_spinner.xml" value="0.2535" />

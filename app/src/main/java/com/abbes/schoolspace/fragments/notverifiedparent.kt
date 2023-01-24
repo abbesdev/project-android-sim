@@ -143,7 +143,7 @@ class notverifiedparent : Fragment() {
                     newArrayList2 = response.body()!!
                     Log.e("getusers",newArrayList2.toString())
                     for(i in newArrayList2.indices){
-                        if(newArrayList2[i].confirmed==false && newArrayList2[i].roles[0]=="638628bb762241552fd5b1a4"){
+                        if(newArrayList2[i].confirmed==false && newArrayList2[i].roles[0]=="63862832351815a82140b1c1"){
                             Log.e("beyraam",i.toString())
                             //val student = UserInfo(fullname[i],email[i], password[i],confirmed[i])
                             newArrayList3.add(newArrayList2[i])}

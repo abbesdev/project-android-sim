@@ -71,7 +71,7 @@
             tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
-        <CalendarView
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
             android:id="@+id/calendarView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,13 +80,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+
             android:layout_width="match_parent"
             android:layout_height="300sp"
             android:background="@color/gray_200"
+            tools:listitem="@layout/activity_detail_table"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/calendarView2"></ListView>
+            app:layout_constraintTop_toBottomOf="@+id/calendarView2"></androidx.recyclerview.widget.RecyclerView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

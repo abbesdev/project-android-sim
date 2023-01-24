@@ -131,7 +131,7 @@ class notverified : Fragment() {
 
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://project-android-sim.vercel.app/api/test/")
+            .baseUrl("https://project-android-sim.vercel.app/")
             .build()
             .create(RestApi::class.java)
         val retrofitData = retrofitBuilder.getAllUser()
