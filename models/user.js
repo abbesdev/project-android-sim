@@ -10,7 +10,7 @@ var User = mongoose.model(
 
     confirmed: {
       type: Boolean,
-      default: false
+      default: true
     },
     roles: [
       {
