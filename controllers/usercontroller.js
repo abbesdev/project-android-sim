@@ -1,8 +1,13 @@
 const Classroom = require("../models/classroom");
 const TimeTable = require("../models/timetable");
 const User = require("../models/user");
+const nodemailer = require('nodemailer');
+const crypto = require('crypto');
 
-
+function createResetToken() {
+  const resetToken = crypto.randomBytes(20).toString('hex');
+  return resetToken;
+}
 exports.adminBoard = (req, res) => {
     res.status(200).send("admin Content.");
   };
@@ -81,18 +86,7 @@ exports.countParents = async (req, res) => {
     res.status(400).send({error : "User not found"});
   }
 };
-exports.updateUser = async (req, res) => {
-  try{
-    const user = await User.findById(req.params.id);
-    var id = req.params.id
-    Object.assign(user, req.body);
-    await user.update(user, {$set: req.body});
-    res.send(user);
-  } catch(e) {
-    res.status(404).send({error : "User not found"});
-    res.status(400).send({error : e});
-  }
-};
+
 exports.deleteUser = async (req, res) => {
    try{
     const user = await User.findById(req.params.id);
@@ -168,3 +162,51 @@ exports.confirmation = async (req, res) => {
     }
   };
 //exports.
+
+
+exports.resetPass = async (req, res) => {
+
+    try {
+      const { email } = req.body;
+      const user = await User.findOne({ email });
+  
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      const resetToken = createResetToken(user._id);
+  
+      user.resetLink.data = resetToken;
+      user.resetLink.expires = Date.now() + 3600000; // 1 hour
+      await user.save();
+  const resetLinkk = "https://project-android-sim.vercel.app/reset-password/"+resetToken
+      const transporter = nodemailer.createTransport({
+
+       
+        host: 'smtp.sendgrid.net',
+        port: 587,
+        secure: false,
+        auth: {
+          user: 'apikey',
+          pass: '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'
+        }
+      });
+    
+      const mailOptions = {
+        from: 'tmail1471@gmail.com',
+        to: email,
+        subject: 'Reset Your Password',
+        html: `Click to reset your password.
+        <br/><br/>
+        <a href="${resetLinkk}">${resetLinkk}</a>`
+      };
+    
+      await transporter.sendMail(mailOptions);
+      
+      res.status(200).json({ message: 'Reset link sent to email' });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Server error' });
+    }
+
+};

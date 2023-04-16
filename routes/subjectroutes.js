@@ -1,10 +1,11 @@
 const express = require('express');
+const authJwt = require('../middlewares/authJwt.js');
 const { verifyToken } = require('../middlewares/authJwt.js');
 const Model = require('../models/subject.js');
 const router = express.Router();
 
 //Post Method
-router.post('/post', async (req, res) => {
+router.post('/post',[verifyToken], async (req, res) => {
     const data = new Model({
         nameSubject: req.body.nameSubject,
         imageSubject:req.body.imageSubject
@@ -21,7 +22,7 @@ router.post('/post', async (req, res) => {
 })
 
 //Get all Method
-router.get('/getAll', async (req, res) => {
+router.get('/getAll',[verifyToken], async (req, res) => {
     try {
 
         const data = await Model.find();

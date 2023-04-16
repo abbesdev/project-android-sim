@@ -54,11 +54,18 @@ module.exports = function(app) {
         res.status(500).json({ message: error.message })
     }
 })
+
+app.post( '/reset-password', controller.resetPass);
+
+
+
   //get all users
   app.get(
     "/api/test/getallusers",
     controller.findallUsers
   );
+
+
   // get users number
   app.get(
     "/api/test/countusers",
@@ -93,11 +100,7 @@ module.exports = function(app) {
   );
     
 
-  //update user by id
-  app.patch(
-    "/api/test/updateuser/:id",
-    controller.updateUser
-  );
+
 app.patch(
   "/confirmation",async (req, res) => {
   const _id = req.body._id;
